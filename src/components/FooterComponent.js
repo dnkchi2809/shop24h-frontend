@@ -5,7 +5,7 @@ import logoImg from "../app/image/logo-white.PNG";
 function FooterComponent() {
     return (
         <>
-            <Grid style={{ color: "#0093FB", height: "180px" }}>
+            <Grid style={{ height: "180px" }}>
                 <Grid className="container">
                     <Row className="pt-2">
                         <Col className="col-2">
