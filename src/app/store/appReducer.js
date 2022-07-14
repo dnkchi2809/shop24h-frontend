@@ -3,6 +3,8 @@ const initialState = {
     openLoginModal: false,
     openSignInModal: false,
     productList: [],
+    lowPrice: 0,
+    highPrice: 999999999999
 }
 
 const appReducer = (state = initialState, action) => {
@@ -29,6 +31,18 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 productList: action.payload.productList
+            };
+            break;
+        case "SET_PRICE_LOW":
+            return {
+                ...state,
+                lowPrice: action.payload.lowPrice
+            };
+            break;
+        case "SET_PRICE_HIGH":
+            return {
+                ...state,
+                highPrice: action.payload.highPrice
             };
             break;
         default:

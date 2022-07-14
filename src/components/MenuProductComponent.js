@@ -47,7 +47,6 @@ function MenuProductComponent() {
                         productType.map((element, index) => {
                             return (
                                 <>
-                                    <Divider />
                                     <MenuItem>
                                         {element.name}
                                         {/*<ListItemText inset>Single</ListItemText>*/}

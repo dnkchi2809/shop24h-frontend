@@ -8,7 +8,7 @@ function FooterComponent() {
             <Grid style={{ height: "180px" }}>
                 <Grid className="container">
                     <Row className="pt-2">
-                        <Col className="col-2">
+                        <Col className="col-3">
                             <h5>PRODUCTS</h5>
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Help Center</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Contact Us</a><br />
@@ -16,7 +16,7 @@ function FooterComponent() {
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Warranty</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Order Status</a><br />
                         </Col>
-                        <Col className="col-2">
+                        <Col className="col-3">
                             <h5>SERVICES</h5>
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Help Center</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Contact Us</a><br />
@@ -24,7 +24,7 @@ function FooterComponent() {
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Warranty</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Order Status</a><br />
                         </Col>
-                        <Col className="col-2">
+                        <Col className="col-3">
                             <h5>SUPPORT</h5>
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Help Center</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Contact Us</a><br />
@@ -32,9 +32,9 @@ function FooterComponent() {
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Warranty</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Order Status</a><br />
                         </Col>
-                        <Col className="col-6 justify-content-center">
+                        <Col className="col-3 justify-content-center">
                             <Row className="justify-content-center">
-                                <img src={logoImg} style={{ width: "25%" }} />
+                                <img src={logoImg} style={{ width: "50%" }} />
                             </Row>
                             <Row>
                                 <Col className="d-flex justify-content-center">
