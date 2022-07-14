@@ -63,7 +63,6 @@ function HeaderComponent() {
 
     useEffect(() => {
         auth.onAuthStateChanged((result) => {
-            console.log(result);
             dispatch({
                 type: "SET_USER",
                 payload: {
@@ -82,9 +81,19 @@ function HeaderComponent() {
                         <Col className="m-0 p-0">
                             <List type="inline">
                                 <ListInlineItem>
-                                    <Button variant="text" sx={{ color: "white", padding: "0%" }} onClick={() => console.log("Home")}>
-                                        <i class="fa-solid fa-house"></i>&nbsp;
-                                        Home
+                                    <Button variant="text" sx={{ padding: "0%" }}>
+                                        <a style={{ color: "white", textDecoration: "none" }} href='/'>
+                                            <i class="fa-solid fa-house"></i>&nbsp;
+                                            Home
+                                        </a>
+                                    </Button>
+                                </ListInlineItem>
+                                <ListInlineItem>
+                                    <Button variant="text">
+                                        <a style={{ color: "white", textDecoration: "none" }} href='/products'>
+                                            <i class="fas fa-list"></i>&nbsp;
+                                            Products
+                                        </a>
                                     </Button>
                                 </ListInlineItem>
                                 <ListInlineItem>
@@ -92,6 +101,10 @@ function HeaderComponent() {
                                         <i class="fa-solid fa-phone"></i>&nbsp;
                                         Contact Us
                                     </Button>
+                                </ListInlineItem>
+                                <ListInlineItem>
+                                    <i className="fa-brands fa-facebook m-2 fa-lg"></i>&nbsp;
+                                    <i className="fa-brands fa-instagram m-2 fa-lg"></i>&nbsp;
                                 </ListInlineItem>
                             </List>
                         </Col>
@@ -107,7 +120,7 @@ function HeaderComponent() {
                                                         <p className='mt-1'>Hello, {user.displayName}</p>
                                                     </Col>
                                                     <Col>
-                                                        <img src={user.photoURL} style={{ width: "100%", borderRadius : "50%" }} onClick={onAvatarClick} />
+                                                        <img src={user.photoURL} style={{ width: "100%", borderRadius: "50%" }} onClick={onAvatarClick} />
                                                     </Col>
                                                 </Row>
                                             </Col>
@@ -129,7 +142,7 @@ function HeaderComponent() {
                                                 <Button className='mt-2 p-0' variant="text" sx={{ color: "white" }} onClick={onBtnSignInClick}>Sign In</Button>
                                             </Col>
                                             <Col>
-                                                <Button className='mt-2 p-0' variant="text " sx={{ color: "white"}} onClick={onBtnLogInClick}>Log In</Button>
+                                                <Button className='mt-2 p-0' variant="text " sx={{ color: "white" }} onClick={onBtnLogInClick}>Log In</Button>
                                             </Col>
                                         </>
                                 }
@@ -138,8 +151,10 @@ function HeaderComponent() {
                         </Col>
                     </Row>
                     <Row className="p-0">
-                        <Col className="col-2 d-flex justify-content-center p-0">
-                            <img src={logoImg} style={{ width: "50%", objectFit: "contain" }} />
+                        <Col className="col-2 d-flex justify-content-center align-items-center">
+                            <a href="/" className="text-center">
+                                <img src={logoImg} style={{ width: "60%", objectFit: "contain" }} />
+                            </a>
                         </Col>
                         <Col className="col-8">
                             <Row style={{ backgroundColor: "white" }} className="mt-3">

@@ -6,3 +6,16 @@
 body{
   position:inherit;
 }
+
+.new-price {
+  font-size: medium;
+  font-weight: bold;
+  text-decoration-line: none;
+  color:cornflowerblue;
+}
+
+.old-price {
+  font-size: medium;
+  text-decoration-line: line-through;
+  color: dimgray;
+}

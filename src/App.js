@@ -1,21 +1,26 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import LastetProductComponent from "./components/LastetProductComponent";
-import FooterComponent from "./components/FooterComponent";
-import HeaderComponent from "./components/HeaderComponent";
-import SlideComponent from "./components/SlideComponent";
+import { Routes, Route } from "react-router-dom"
 
 import "./App.css"
+import HeaderComponent from "./components/HeaderComponent";
+import FooterComponent from "./components/FooterComponent"
+import Home from "./pages/Home";
+import ProductList from "./pages/ProductList";
 
 
 function App() {
   return (
-    <div>
-      <HeaderComponent />
-      <SlideComponent />
-      <LastetProductComponent />
-      <FooterComponent />
-    </div>
+    <>
+      <HeaderComponent/>
+      <Routes>
+        <Route exact path="/" element={<Home />}></Route>
+        <Route exact path="*" element={<Home />}></Route>
+        <Route exact path="/products" element={<ProductList />}></Route>
+      </Routes>
+      <FooterComponent/>
+    </>
+
   );
 }
 

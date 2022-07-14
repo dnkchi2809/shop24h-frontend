@@ -1,11 +1,11 @@
 import { Grid, Typography } from "@mui/material"
-import { Row, Col } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import Carousel from 'react-bootstrap/Carousel';
 
 function SlideComponent() {
     return (
         <>
-            <Grid style={{ marginTop: "9%", marginLeft: "5%", marginRight: "5%"}}>
+            <Container style={{ marginTop: "10%" }}>
                 <Row className="align-items-center">
                     <Col className="col-6 p-5">
                         <Row>
@@ -57,9 +57,7 @@ function SlideComponent() {
                         </Carousel>
                     </Col>
                 </Row>
-
-
-            </Grid>
+            </Container>
         </>
     )
 }
