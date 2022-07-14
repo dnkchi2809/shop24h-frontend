@@ -42,7 +42,7 @@ function LastestProductComponent() {
                                         <Col className="col-3 mt-4">
                                             <Row className="text-center m-0">
                                                 <img
-                                                    src="https://i.ex-cdn.com/mgn.vn/files/content/2022/05/11/2-0300.jpg"
+                                                    src={element.imageUrl}
                                                     style={{ width: "300px", height: "300px", objectFit: "cover" }}
                                                 />
                                                 <p className="h5 mt-1">{element.name}</p>
@@ -59,9 +59,13 @@ function LastestProductComponent() {
                             null
                     }
                 </Row>
-                <Row className="justify-content-center">
+                <Row className="justify-content-center mt-5 mb-5">
                     <Col className="col-2">
-                        <btn className="btn btn-dark w-100">VIEW ALL</btn>
+                        <btn className="btn btn-dark w-100">
+                            <a style={{ color: "white", textDecoration: "none" }} href='/products'>
+                                VIEW ALL
+                            </a>
+                        </btn>
                     </Col>
                 </Row>
             </Grid>

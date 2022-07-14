@@ -27,7 +27,7 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 });
 
 
-export default function BreadcrumbComponent() {
+function BreadcrumbComponent() {
   const navigate = useNavigate();
 
   return (
@@ -39,3 +39,5 @@ export default function BreadcrumbComponent() {
     </div>
   );
 }
+
+export default BreadcrumbComponent;
