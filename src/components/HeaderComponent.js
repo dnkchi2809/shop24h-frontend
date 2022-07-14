@@ -4,6 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button'
+import { Container } from "reactstrap"
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Input, Row, Col, List, ListInlineItem } from "reactstrap";
@@ -13,7 +14,7 @@ import { auth } from "../firebase"
 
 function HeaderComponent() {
     const dispatch = useDispatch();
-    const { user, openLoginModal, openSignInModal } = useSelector((reduxData) => reduxData.reducers);
+    const { user } = useSelector((reduxData) => reduxData.reducers);
 
     const onBtnLogInClick = () => {
         dispatch({
@@ -86,7 +87,7 @@ function HeaderComponent() {
     return (
         <>
             <Grid style={{ backgroundColor: "black", color: "white" }} className="fixed-top">
-                <Grid className="container mb-2 mt-1">
+                <Container className="mb-2 mt-1">
                     <Row style={{ height: "35px" }}>
                         <Col className="m-0 p-0">
                             <List type="inline">
@@ -125,11 +126,11 @@ function HeaderComponent() {
                                         ?
                                         <>
                                             <Col className="p-0 m-0">
-                                                <Row>
-                                                    <Col className='col-10 d-flex justify-content-end align-items-center'>
-                                                        <p className='mt-1'>Hello, {user.displayName}</p>
+                                                <Row className=' d-flex justify-content-center align-items-center'>
+                                                    <Col className='col-10 d-flex justify-content-end'>
+                                                        <p className='pt-2'>Hello, {user.displayName}</p>
                                                     </Col>
-                                                    <Col>
+                                                    <Col className='col-2 p-1'>
                                                         <img src={user.photoURL} style={{ width: "100%", borderRadius: "50%" }} onClick={onAvatarClick} />
                                                     </Col>
                                                 </Row>
@@ -169,7 +170,7 @@ function HeaderComponent() {
                         <Col className="col-8">
                             <Row style={{ backgroundColor: "white" }} className="mt-3">
                                 <Col className="col-11">
-                                    <Input placeholder="Nhập thông tin" style={{ border: "none" }} />
+                                    <Input placeholder="What are you looking for?" style={{ border: "none" }} />
                                 </Col>
                                 <Col className="col-1 mt-1 text-center">
                                     <i class="fa-solid fa-magnifying-glass text-primary"></i>
@@ -206,7 +207,7 @@ function HeaderComponent() {
                             </Row>
                         </Col>
                     </Row>
-                </Grid>
+                </Container>
             </Grid>
 
             {/* Modals */}

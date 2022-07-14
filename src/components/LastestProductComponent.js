@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { Row, Col } from "react-bootstrap"
+import { Container } from "reactstrap"
 
 function LastestProductComponent() {
 
@@ -16,10 +17,10 @@ function LastestProductComponent() {
 
     return (
         <>
-            <Grid style={{ marginTop: "4%", marginLeft: "5%", marginRight: "5%" }}>
+            <Container style={{ marginTop: "4%"}}>
                 <Row className="text-center">
                     <Typography>
-                        <h3>LASTED PRODUCT</h3>
+                        <h1>LASTED PRODUCT</h1>
                     </Typography>
                 </Row>
                 <Row>
@@ -30,10 +31,11 @@ function LastestProductComponent() {
                                 console.log(element);
                                 while (index < 8) {
                                     return (
-                                        <Col className="col-3 mt-4">
+                                        <Col className="col-3 mt-5">
                                             <Row className="text-center m-0">
                                                 <img
                                                     src={element.imageUrl}
+                                                    className="p-0"
                                                     style={{ width: "300px", height: "300px", objectFit: "cover" }}
                                                 />
                                                 <p className="h5 mt-1">{element.name}</p>
@@ -50,7 +52,7 @@ function LastestProductComponent() {
                             null
                     }
                 </Row>
-                <Row className="justify-content-center mt-5 mb-5">
+                <Row className="justify-content-center mt-4 mb-5">
                     <Col className="col-2">
                         <btn className="btn btn-dark w-100">
                             <a style={{ color: "white", textDecoration: "none" }} href='/products'>
@@ -59,7 +61,7 @@ function LastestProductComponent() {
                         </btn>
                     </Col>
                 </Row>
-            </Grid>
+            </Container>
         </>
     )
 }

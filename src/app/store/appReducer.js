@@ -1,7 +1,8 @@
 const initialState = {
     user: null,
     openLoginModal: false,
-    openSignInModal: false
+    openSignInModal: false,
+    productList: null,
 }
 
 const appReducer = (state = initialState, action) => {
@@ -22,6 +23,12 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 openSignInModal: action.payload.openSignInModal
+            };
+            break;
+        case "GET_PRODUCT_LIST":
+            return {
+                ...state,
+                productList: action.payload.productList
             };
             break;
         default:
