@@ -61,6 +61,8 @@ function HeaderComponent() {
         setAnchorEl(null);
     };
 
+    const [productType, setProductType] = React.useState(null);
+
     useEffect(() => {
         auth.onAuthStateChanged((result) => {
             dispatch({
@@ -69,7 +71,15 @@ function HeaderComponent() {
                     user: result
                 }
             });
-        })
+        });
+
+        fetch("http://localhost:8000/productTypes")
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                setProductType(result.data);
+            })
+            .catch(error => console.log('error', error));
     }, [])
 
 
@@ -167,21 +177,21 @@ function HeaderComponent() {
                             </Row>
                             <Row className="mt-1">
                                 <List type="inline" style={{ color: "#d6e0f5", fontSize: "85%", paddingLeft: "0" }}>
-                                    <ListInlineItem>
-                                        Áo thun
-                                    </ListInlineItem>
-                                    <ListInlineItem style={{ marginLeft: "2%" }}>
-                                        Áo kiểu
-                                    </ListInlineItem>
-                                    <ListInlineItem style={{ marginLeft: "2%" }}>
-                                        Quần jean
-                                    </ListInlineItem>
-                                    <ListInlineItem style={{ marginLeft: "2%" }}>
-                                        Đầm
-                                    </ListInlineItem>
-                                    <ListInlineItem style={{ marginLeft: "2%" }}>
-                                        Short
-                                    </ListInlineItem>
+                                    {
+                                        productType !== null
+                                            ?
+                                            productType.map((element, index) => {
+                                                return (
+                                                    <>
+                                                        <ListInlineItem style={{ marginRight: "3%" }}>
+                                                            {element.name}
+                                                        </ListInlineItem>
+                                                    </>
+                                                )
+                                            })
+                                            :
+                                            null
+                                    }
                                 </List>
                             </Row>
                         </Col>

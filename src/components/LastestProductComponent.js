@@ -6,16 +6,7 @@ function LastestProductComponent() {
 
     const [lastestProduct, setLastestProduct] = useState(null);
     useEffect(() => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch("http://localhost:8000/products", requestOptions)
+        fetch("http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
                 setLastestProduct(result.data);

@@ -6,8 +6,8 @@ import MenuProductComponent from "../components/MenuProductComponent";
 function ProductList() {
     return (
         <>
-            <Container style={{ marginTop: "11%" }}>
-                <BreadcrumbComponent />
+            <Container style={{ marginTop: "11%"}}>
+                <BreadcrumbComponent className="mb-5"/>
                 <Row>
                     <Col className="col-2">
                         <MenuProductComponent/>
