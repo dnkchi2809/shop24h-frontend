@@ -2,7 +2,7 @@ const initialState = {
     user: null,
     openLoginModal: false,
     openSignInModal: false,
-    productList: null,
+    productList: [],
 }
 
 const appReducer = (state = initialState, action) => {

@@ -31,7 +31,6 @@ function MenuProductComponent() {
         fetch("http://localhost:8000/productTypes")
             .then(response => response.json())
             .then(result => {
-                console.log(result);
                 setProductType(result.data);
             })
             .catch(error => console.log('error', error));
