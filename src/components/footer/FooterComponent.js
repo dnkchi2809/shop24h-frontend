@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import { Col, Row } from "reactstrap";
-import logoImg from "../app/image/logo-white.PNG";
+import logoImg from "../../app/image/logo-white.PNG";
 
 function FooterComponent() {
     return (

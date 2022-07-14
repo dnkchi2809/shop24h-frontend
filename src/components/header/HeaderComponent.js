@@ -8,9 +8,9 @@ import { Container } from "reactstrap"
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Input, Row, Col, List, ListInlineItem } from "reactstrap";
-import logoImg from "../app/image/logo.PNG";
-import LoginModal from "./modals/LoginModal";
-import { auth } from "../firebase"
+import logoImg from "../../app/image/logo.PNG";
+import LoginModal from "../modals/LoginModal";
+import { auth } from "../../firebase"
 
 function HeaderComponent() {
     const dispatch = useDispatch();

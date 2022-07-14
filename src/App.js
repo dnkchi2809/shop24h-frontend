@@ -3,8 +3,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Routes, Route } from "react-router-dom"
 
 import "./App.css"
-import HeaderComponent from "./components/HeaderComponent";
-import FooterComponent from "./components/FooterComponent"
+import HeaderComponent from "./components/header/HeaderComponent";
+import FooterComponent from "./components/footer/FooterComponent"
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
 
