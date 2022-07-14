@@ -1,20 +1,39 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Row, Col } from "react-bootstrap"
+import { Row, Col } from "react-bootstrap";
+import {Grid } from "@mui/material";
+import Pagination from '@mui/material/Pagination';
 
 function ContentComponent() {
     const { productList } = useSelector((reduxData) => reduxData.reducers);
 
-    useEffect(() => {
+    const limit = 12;
+    
+    const [pageIndex, setPageIndex] = useState(1);
 
-    }, [])
+    const [pageAmount, setPageAmount] = useState(0);
+
+    const [rows, setRows] = useState(null)
+
+    const onPageIndexChange = (event, value) => {
+        setPageIndex(value);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+    }
+
+    useEffect(() => {
+        setPageAmount(Math.ceil(productList.length / limit));
+        setRows(productList.slice((pageIndex - 1) * limit, pageIndex * limit))
+    })
     return (
         <>
             <Row>
                 {
-                    productList !== null
+                    rows !== null
                         ?
-                        productList.map((element, index) => {
+                        rows.map((element, index) => {
                             return (
                                 <Col className="col-3 mt-3 mb-4">
                                     <Row className="text-center p-0 m-0">
@@ -36,6 +55,11 @@ function ContentComponent() {
                         null
                 }
             </Row>
+
+            {/* Pagination */}
+            <Grid className="mb-5 d-flex justify-content-center">
+                <Pagination count={pageAmount} defaultPage={pageIndex} onChange={onPageIndexChange} />
+            </Grid>
         </>
     )
 }
