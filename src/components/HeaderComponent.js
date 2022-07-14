@@ -181,13 +181,15 @@ function HeaderComponent() {
                                         productType !== null
                                             ?
                                             productType.map((element, index) => {
-                                                return (
-                                                    <>
-                                                        <ListInlineItem style={{ marginRight: "3%" }}>
-                                                            {element.name}
-                                                        </ListInlineItem>
-                                                    </>
-                                                )
+                                                while (index < 10) {
+                                                    return (
+                                                        <>
+                                                            <ListInlineItem style={{ marginRight: "3%" }}>
+                                                                {element.name}
+                                                            </ListInlineItem>
+                                                        </>
+                                                    )
+                                                }
                                             })
                                             :
                                             null

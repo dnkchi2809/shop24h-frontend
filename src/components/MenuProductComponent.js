@@ -6,7 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 function MenuProductComponent() {
     const [productType, setProductType] = React.useState(null);
-    
+
     React.useEffect(() => {
         fetch("http://localhost:8000/productTypes")
             .then(response => response.json())
@@ -18,7 +18,7 @@ function MenuProductComponent() {
     }, [])
     return (
         <>
-            <MenuList>
+            <MenuList className='mb-3'>
                 <MenuItem>
                     <b>All Products</b>
                 </MenuItem>
