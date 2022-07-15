@@ -74,7 +74,7 @@ function MenuProductComponent() {
     }, [])
     return (
         <>
-            <MenuList variant="selectedMenu" autoFocusItem={true} className='mb-3'>
+            <MenuList className='mb-3'>
                 <MenuItem onClick={onAllProductClick}>
                     <b>All Products</b>
                 </MenuItem>
