@@ -1,13 +1,26 @@
 import { Grid } from "@mui/material";
 import {Row} from "reactstrap";
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 function ProductCard(props) {
     const navigate = useNavigate();
 
+    const dispatch = useDispatch();
+
     const onProductClick = () => {
-        console.log(props.product)
+        console.log(props.product);
+
+        dispatch({
+            type: "SET_PRODUCT_TYPE",
+            payload: {
+                productType: props.product.type
+            }
+        })
+
         navigate("/products/" +  props.product._id)
+        
+
     }
 
     return (

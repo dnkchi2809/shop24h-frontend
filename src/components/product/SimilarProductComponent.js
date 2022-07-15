@@ -6,7 +6,7 @@ import ProductCard from "./ProductCard";
 import { useSelector, useDispatch } from "react-redux";
 
 function SimilarProductComponent() {
-    const { productList, productType } = useSelector((reduxData) => reduxData.reducers);
+    const { productType } = useSelector((reduxData) => reduxData.reducers);
 
     const [similarProduct, setSimilarProduct] = useState(null);
 
@@ -14,7 +14,9 @@ function SimilarProductComponent() {
         fetch("http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
-                setSimilarProduct(result.data);
+                setSimilarProduct(result.data.filter((element, index) => {
+                    return element.type === productType
+                }));
             })
             .catch(error => console.log('error', error));
     }, [])
