@@ -34,9 +34,9 @@ function SimilarProductComponent() {
                         similarProduct !== null
                             ?
                             similarProduct.map((element, index) => {
-                                while (index < 8) {
+                                while (index < 6) {
                                     return (
-                                        <Col className="col-3 mt-5">
+                                        <Col className="col-4 mt-5">
                                             <ProductCard product={element} />
                                         </Col>
                                     )
