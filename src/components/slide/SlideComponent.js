@@ -25,7 +25,7 @@ function SlideComponent() {
                             <Carousel.Item>
                                 <img
                                     className="w-100"
-                                    src={require("../app/image/slide/slide1.jpg")}
+                                    src={require("../../app/image/slide/slide1.jpg")}
                                     alt="First slide"
                                     style={{width : "500px", height : "500px", objectFit: "contain"}}
                                 />
@@ -33,7 +33,7 @@ function SlideComponent() {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={require("../app/image/slide/slide2.jpg")}
+                                    src={require("../../app/image/slide/slide2.jpg")}
                                     alt="Second slide"
                                     style={{width : "500px", height : "500px", objectFit: "contain"}}
                                 />
@@ -41,7 +41,7 @@ function SlideComponent() {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={require("../app/image/slide/slide3.jpg")}
+                                    src={require("../../app/image/slide/slide3.jpg")}
                                     alt="Third slide"
                                     style={{width : "500px", height : "500px", objectFit: "contain"}}
                                 />
@@ -49,7 +49,7 @@ function SlideComponent() {
                             <Carousel.Item>
                                 <img
                                     className="d-block w-100"
-                                    src={require("../app/image/slide/slide4.jpg")}
+                                    src={require("../../app/image/slide/slide4.jpg")}
                                     alt="Fourth slide"
                                     style={{width : "500px", height : "500px", objectFit: "contain"}}
                                 />

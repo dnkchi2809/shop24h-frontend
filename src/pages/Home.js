@@ -1,5 +1,5 @@
-import LastestProductComponent from "../components/LastestProductComponent";
-import SlideComponent from "../components/SlideComponent";
+import LastestProductComponent from "../components/product/LastestProductComponent";
+import SlideComponent from "../components/slide/SlideComponent";
 
 function Home() {
     return (

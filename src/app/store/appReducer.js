@@ -4,7 +4,9 @@ const initialState = {
     openSignInModal: false,
     productList: [],
     lowPrice: 0,
-    highPrice: 999999999999
+    highPrice: 999999999999,
+    productType: "",
+    keyword: ""
 }
 
 const appReducer = (state = initialState, action) => {
@@ -43,6 +45,18 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 highPrice: action.payload.highPrice
+            };
+            break;
+        case "SET_PRODUCT_TYPE":
+            return {
+                ...state,
+                productType: action.payload.productType
+            };
+            break;
+        case "FIND_KEYWORD":
+            return {
+                ...state,
+                keyword: action.payload.keyword
             };
             break;
         default:

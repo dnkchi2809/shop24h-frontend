@@ -64,6 +64,15 @@ function HeaderComponent() {
 
     const [productType, setProductType] = React.useState(null);
 
+    const onInputFindKeyword = (event) => {
+        dispatch({
+            type: "FIND_KEYWORD",
+            payload: {
+                keyword: event.target.value
+            }
+        });
+    }
+
     useEffect(() => {
         auth.onAuthStateChanged((result) => {
             dispatch({
@@ -169,14 +178,14 @@ function HeaderComponent() {
                         <Col className="col-8">
                             <Row style={{ backgroundColor: "white" }} className="mt-3">
                                 <Col className="col-11">
-                                    <Input placeholder="What are you looking for?" style={{ border: "none" }} />
+                                    <Input placeholder="What are you looking for?" style={{ border: "none" }} onInput={onInputFindKeyword}/>
                                 </Col>
                                 <Col className="col-1 mt-1 text-center">
                                     <i class="fa-solid fa-magnifying-glass text-primary"></i>
                                 </Col>
                             </Row>
                             <Row className="mt-1">
-                                <List type="inline" style={{ color: "#d6e0f5", fontSize: "85%", paddingLeft: "0" }}>
+                                <List type="inline" style={{ fontSize: "85%", paddingLeft: "0" }}>
                                     {
                                         productType !== null
                                             ?
@@ -184,8 +193,10 @@ function HeaderComponent() {
                                                 while (index < 10) {
                                                     return (
                                                         <>
-                                                            <ListInlineItem style={{ marginRight: "3%" }}>
-                                                                {element.name}
+                                                            <ListInlineItem style={{ marginRight: "3%" }} id={element._id}>
+                                                                <a style={{ color: "#d6e0f5", textDecoration: "none" }} href='/products'>
+                                                                    {element.name}
+                                                                </a>
                                                             </ListInlineItem>
                                                         </>
                                                     )

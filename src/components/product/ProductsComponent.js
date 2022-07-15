@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 
 function ContentComponent() {
-    const { productList, lowPrice, highPrice } = useSelector((reduxData) => reduxData.reducers);
+    const { productList, lowPrice, highPrice, productType, keyword } = useSelector((reduxData) => reduxData.reducers);
 
     const limit = 12;
 
@@ -26,9 +26,30 @@ function ContentComponent() {
     }
 
     useEffect(() => {
-        setData(productList.filter((element, index) => {
-            return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice
-        }))
+        if(keyword !== ""){
+            const resultFilter = [];
+            productList.map((element, index) => {
+                let vInput = keyword.toLowerCase();
+                let vElement = element.name.toLowerCase();
+                if(vElement.search(vInput) >= 0){
+                    resultFilter.push(element)
+                }
+                setData(resultFilter.filter((element, index) => {
+                    return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice
+                }))
+            })
+        }
+        else if(productType !== ""){
+            setData(productList.filter((element, index) => {
+                return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice && element.type == productType
+            }))
+        }
+        else{
+            setData(productList.filter((element, index) => {
+                return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice
+            }))
+        }
+        
 
         setPageAmount(Math.ceil(data.length / limit));
         setRows(data.slice((pageIndex - 1) * limit, pageIndex * limit));

@@ -17,9 +17,24 @@ function MenuProductComponent() {
                     payload: {
                         productList: result.data
                     }
+                });
+                dispatch({
+                    type: "SET_PRODUCT_TYPE",
+                    payload: {
+                        productType: ""
+                    }
                 })
             })
             .catch(error => console.log('error', error));
+    }
+
+    const onProductCLick = (event) => {
+        dispatch({
+            type: "SET_PRODUCT_TYPE",
+            payload: {
+                productType: event.target.id
+            }
+        });
     }
 
     const [productType, setProductType] = React.useState(null);
@@ -37,7 +52,7 @@ function MenuProductComponent() {
     }, [])
     return (
         <>
-            <MenuList className='mb-3'>
+            <MenuList variant="selectedMenu" autoFocusItem={true} className='mb-3'>
                 <MenuItem onClick={onAllProductClick}>
                     <b>All Products</b>
                 </MenuItem>
@@ -47,7 +62,7 @@ function MenuProductComponent() {
                         productType.map((element, index) => {
                             return (
                                 <>
-                                    <MenuItem>
+                                    <MenuItem onClick={onProductCLick} id={element._id}>
                                         {element.name}
                                         {/*<ListItemText inset>Single</ListItemText>*/}
                                     </MenuItem>

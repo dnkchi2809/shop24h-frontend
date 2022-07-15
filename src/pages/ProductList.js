@@ -1,8 +1,8 @@
 import { Container, Row,Col } from "reactstrap";
-import BreadcrumbComponent from "../components/BreadcrumbComponent";
-import ContentComponent from "../components/ContentComponent";
-import MenuProductComponent from "../components/MenuProductComponent";
-import ProductFilterComponent from "../components/ProductFilterComponent";
+import BreadcrumbComponent from "../components/breadcrumb/BreadcrumbComponent";
+import ProductsComponent from "../components/product/ProductsComponent";
+import MenuProductComponent from "../components/product/MenuProductComponent";
+import ProductFilterComponent from "../components/product/ProductFilterComponent";
 
 function ProductList() {
     return (
@@ -15,7 +15,7 @@ function ProductList() {
                         <ProductFilterComponent/>
                     </Col>
                     <Col className="col-9">
-                        <ContentComponent/>
+                        <ProductsComponent/>
                     </Col>
                 </Row>
             </Container>
