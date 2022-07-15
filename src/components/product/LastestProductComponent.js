@@ -2,6 +2,7 @@ import { Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
 import { Row, Col } from "react-bootstrap"
 import { Container } from "reactstrap"
+import ProductCard from "./ProductCard";
 
 function LastestProductComponent() {
 
@@ -17,7 +18,7 @@ function LastestProductComponent() {
 
     return (
         <>
-            <Container style={{ marginTop: "4%"}}>
+            <Container style={{ marginTop: "4%" }}>
                 <Row className="text-center">
                     <Typography>
                         <h1>LASTED PRODUCT</h1>
@@ -31,18 +32,7 @@ function LastestProductComponent() {
                                 while (index < 8) {
                                     return (
                                         <Col className="col-3 mt-5">
-                                            <Row className="text-center m-0">
-                                                <img
-                                                    src={element.imageUrl}
-                                                    className="p-0"
-                                                    style={{ width: "300px", height: "300px", objectFit: "cover" }}
-                                                />
-                                                <p className="h5 mt-1">{element.name}</p>
-                                                <p>
-                                                    <a className="old-price">{element.buyPrice}</a>&nbsp;
-                                                    <a className="new-price">${element.promotionPrice}</a>
-                                                </p>
-                                            </Row>
+                                            <ProductCard props={element} />
                                         </Col>
                                     )
                                 }

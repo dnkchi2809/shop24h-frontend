@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Row, Col } from "react-bootstrap";
 import { Grid } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
-import {useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import ProductCard from "./ProductCard";
 
 function ContentComponent() {
     const { productList, lowPrice, highPrice, productType } = useSelector((reduxData) => reduxData.reducers);
@@ -69,18 +70,7 @@ function ContentComponent() {
                             if (element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice) {
                                 return (
                                     <Col className="col-4 mt-3 mb-4">
-                                        <Row className="text-center p-0 m-0">
-                                            <img
-                                                src={element.imageUrl}
-                                                className="p-1"
-                                                style={{ width: "100%", height: "300px", objectFit: "cover" }}
-                                            />
-                                            <p className="h5 mt-1">{element.name}</p>
-                                            <p>
-                                                <a className="old-price">{element.buyPrice}</a>&nbsp;
-                                                <a className="new-price">${element.promotionPrice}</a>
-                                            </p>
-                                        </Row>
+                                        <ProductCard props={element} />
                                     </Col>
                                 )
                             }
