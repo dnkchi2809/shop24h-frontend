@@ -1,8 +1,15 @@
 import { Grid, Typography } from "@mui/material"
 import { Container, Row, Col } from "reactstrap";
 import Carousel from 'react-bootstrap/Carousel';
+import { useNavigate } from "react-router-dom";
 
 function SlideComponent() {
+    const navigate = useNavigate();
+
+    const onBtnShopNowClick = () => {
+        navigate("/products");
+    }
+
     return (
         <>
             <Container style={{ marginTop: "10%" }}>
@@ -16,7 +23,7 @@ function SlideComponent() {
                         </Typography>
                         <Row className="mt-3">
                             <Col className="col-4">
-                                <button className="btn border-primary text-primary btn-lg">SHOP NOW</button>
+                                <button className="btn border-primary text-primary btn-lg" onClick={onBtnShopNowClick}>SHOP NOW</button>
                             </Col>
                         </Row>
                     </Col>

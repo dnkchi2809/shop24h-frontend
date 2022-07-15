@@ -13,6 +13,51 @@ function ProductDetail() {
 
     const [productInfo, setProductInfo] = useState(null);
 
+    const [amount, setAmount] = useState(0);
+
+    const [noti, setNoti] = useState(false)
+
+    const onBtnMinusProductClick = () => {
+        let amountSelect = amount - 1;
+        if (amountSelect < 0) {
+            setAmount(0);
+            setNoti(false);
+        }
+        else {
+            setAmount(amountSelect)
+            setNoti(false);
+        }
+    }
+
+    const onBtnAddProductClick = () => {
+        let maxAmount = productInfo.amount;
+        let amountSelect = amount + 1;
+        if (amountSelect <= maxAmount) {
+            setAmount(amountSelect)
+            setNoti(false);
+        }
+        else {
+            setAmount(maxAmount);
+            setNoti(true);
+        }
+    }
+
+    const onInputAmountChange = (event) => {
+        let maxAmount = productInfo.amount;
+        if(event.target.value < 0 || event.target.value === ""){
+            setAmount(0);
+            setNoti(false);
+        }
+        else if(event.target.value > maxAmount){
+            setAmount(maxAmount);
+            setNoti(true);
+        }
+        else {
+            setAmount(event.target.value);
+            setNoti(false);
+        }
+    }
+
     useEffect(() => {
         fetch("http://localhost:8000/products/" + productId)
             .then(response => response.json())
@@ -42,7 +87,7 @@ function ProductDetail() {
                             </Col>
                             <Col>
                                 <Row className="mt-1 display-6"><b>{productInfo.name}</b></Row>
-                                <Row className="mt-5">
+                                <Row className="mt-3">
                                     <Col>
                                         <a className="old-price" style={{ fontSize: "250%", marginRight: "2%" }}>${productInfo.buyPrice}</a>&nbsp;
                                         <a className="new-price" style={{ fontSize: "250%" }}>${productInfo.promotionPrice}</a>
@@ -50,9 +95,16 @@ function ProductDetail() {
                                 </Row>
                                 <Row className="mt-5">
                                     <Col className="d-flex">
-                                        <i class="fas fa-minus-circle fa-2x" style={{ marginRight: "2%" }}></i>
-                                        <Input value={0} style={{ width: "100px" }} />
-                                        <i class="fas fa-plus-circle fa-2x" style={{ marginLeft: "2%" }}></i>
+                                        <i class="fas fa-minus-circle fa-2x" style={{ marginRight: "2%" }} onClick={onBtnMinusProductClick}></i>
+                                        <Input type="number" value={amount} onInput={onInputAmountChange} style={{ width: "100px" }} />
+                                        <i class="fas fa-plus-circle fa-2x" style={{ marginLeft: "2%" }} onClick={onBtnAddProductClick}></i>
+                                        {
+                                            noti
+                                            ?
+                                            <p style={{ marginLeft: "2%", color: "blue" }}>The number of products in stock is {productInfo.amount}</p>
+                                            :
+                                            null
+                                        }
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
