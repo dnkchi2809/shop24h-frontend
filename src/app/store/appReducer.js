@@ -5,8 +5,7 @@ const initialState = {
     productList: [],
     lowPrice: 0,
     highPrice: 999999999999,
-    productType: "",
-    keyword: ""
+    productType: ""
 }
 
 const appReducer = (state = initialState, action) => {
@@ -51,12 +50,6 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 productType: action.payload.productType
-            };
-            break;
-        case "FIND_KEYWORD":
-            return {
-                ...state,
-                keyword: action.payload.keyword
             };
             break;
         default:

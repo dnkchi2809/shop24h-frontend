@@ -4,11 +4,15 @@ import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import { useDispatch } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom"
 
 function MenuProductComponent() {
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+
     const onAllProductClick = () => {
+        navigate("/products")
         fetch("http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
@@ -29,6 +33,7 @@ function MenuProductComponent() {
     }
 
     const onProductCLick = (event) => {
+        navigate("/products")
         dispatch({
             type: "SET_PRODUCT_TYPE",
             payload: {

@@ -28,7 +28,6 @@ function LastestProductComponent() {
                         lastestProduct !== null
                             ?
                             lastestProduct.map((element, index) => {
-                                console.log(element);
                                 while (index < 8) {
                                     return (
                                         <Col className="col-3 mt-5">

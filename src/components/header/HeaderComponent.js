@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid } from "@mui/material";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,11 +10,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { Input, Row, Col, List, ListInlineItem } from "reactstrap";
 import logoImg from "../../app/image/logo.PNG";
 import LoginModal from "../modals/LoginModal";
-import { auth } from "../../firebase"
+import { auth } from "../../firebase";
+import { useParams, useNavigate } from "react-router-dom"
 
 function HeaderComponent() {
     const dispatch = useDispatch();
-    const { user } = useSelector((reduxData) => reduxData.reducers);
+
+    const navigate = useNavigate();
+
+    const { user, keyword } = useSelector((reduxData) => reduxData.reducers);
 
     const onBtnLogInClick = () => {
         dispatch({
@@ -64,13 +68,27 @@ function HeaderComponent() {
 
     const [productType, setProductType] = React.useState(null);
 
-    const onInputFindKeyword = (event) => {
+    const [input, setInput] = useState("");
+
+    const onInputSearchChange = (event) => {
+        //console.log(event.target.value);
+        setInput(event.target.value)
+    }
+
+    const onInputSearchEnter = (event) => {
+        if (event.key == "Enter") {
+            navigate("/products?keyword=" + input)
+        }
+    }
+
+    const onSearchButtonClick = () => {
         dispatch({
             type: "FIND_KEYWORD",
             payload: {
-                keyword: event.target.value
+                keyword: input
             }
         });
+        navigate("/products?keyword=" + input)
     }
 
     useEffect(() => {
@@ -178,10 +196,10 @@ function HeaderComponent() {
                         <Col className="col-8">
                             <Row style={{ backgroundColor: "white" }} className="mt-3">
                                 <Col className="col-11">
-                                    <Input placeholder="What are you looking for?" style={{ border: "none" }} onInput={onInputFindKeyword}/>
+                                    <Input placeholder="What are you looking for?" style={{ border: "none" }} onInput={onInputSearchChange} onKeyPress={onInputSearchEnter} />
                                 </Col>
                                 <Col className="col-1 mt-1 text-center">
-                                    <i class="fa-solid fa-magnifying-glass text-primary"></i>
+                                    <i class="fa-solid fa-magnifying-glass text-primary" onClick={onSearchButtonClick}></i>
                                 </Col>
                             </Row>
                             <Row className="mt-1">
