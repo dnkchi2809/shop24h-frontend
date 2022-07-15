@@ -7,18 +7,20 @@ import HeaderComponent from "./components/header/HeaderComponent";
 import FooterComponent from "./components/footer/FooterComponent"
 import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
+import ProductInfo from "./pages/ProductInfo";
 
 
 function App() {
   return (
     <>
-      <HeaderComponent/>
+      <HeaderComponent />
       <Routes>
         <Route exact path="/" element={<Home />}></Route>
         <Route exact path="*" element={<Home />}></Route>
-        <Route exact path="/products" element={<ProductList />}></Route>   
+        <Route exact path="/products" element={<ProductList />}></Route>
+        <Route exact path="/products/:productId" element={<ProductInfo />}></Route>
       </Routes>
-      <FooterComponent/>
+      <FooterComponent />
     </>
 
   );

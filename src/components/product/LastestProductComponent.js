@@ -32,7 +32,7 @@ function LastestProductComponent() {
                                 while (index < 8) {
                                     return (
                                         <Col className="col-3 mt-5">
-                                            <ProductCard props={element} />
+                                            <ProductCard product={element} />
                                         </Col>
                                     )
                                 }

@@ -70,7 +70,7 @@ function ContentComponent() {
                             if (element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice) {
                                 return (
                                     <Col className="col-4 mt-3 mb-4">
-                                        <ProductCard props={element} />
+                                        <ProductCard product={element} />
                                     </Col>
                                 )
                             }
