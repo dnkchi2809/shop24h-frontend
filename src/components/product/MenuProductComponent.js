@@ -12,7 +12,6 @@ function MenuProductComponent() {
     const navigate = useNavigate();
 
     const onAllProductClick = () => {
-        navigate("/products")
         fetch("http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
@@ -30,23 +29,41 @@ function MenuProductComponent() {
                 })
             })
             .catch(error => console.log('error', error));
+
+        navigate("/products")
     }
 
     const onProductCLick = (event) => {
-        navigate("/products")
         dispatch({
             type: "SET_PRODUCT_TYPE",
             payload: {
                 productType: event.target.id
             }
         });
+
+        navigate("/products");
     }
 
     const [productType, setProductType] = React.useState(null);
 
     React.useEffect(() => {
-
-        onAllProductClick();
+        fetch("http://localhost:8000/products")
+            .then(response => response.json())
+            .then(result => {
+                dispatch({
+                    type: "GET_PRODUCT_LIST",
+                    payload: {
+                        productList: result.data
+                    }
+                });
+                dispatch({
+                    type: "SET_PRODUCT_TYPE",
+                    payload: {
+                        productType: ""
+                    }
+                })
+            })
+            .catch(error => console.log('error', error));
 
         fetch("http://localhost:8000/productTypes")
             .then(response => response.json())
