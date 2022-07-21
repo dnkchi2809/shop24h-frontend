@@ -77,7 +77,7 @@ function HeaderComponent() {
 
     const onInputSearchEnter = (event) => {
         if (event.key == "Enter") {
-            navigate("/products?keyword=" + input)
+            navigate("/products?name=" + input)
         }
     }
 
@@ -88,7 +88,7 @@ function HeaderComponent() {
                 keyword: input
             }
         });
-        navigate("/products?keyword=" + input)
+        navigate("/products?name=" + input)
     }
 
     useEffect(() => {
