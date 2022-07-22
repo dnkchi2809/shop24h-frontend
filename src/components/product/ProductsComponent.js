@@ -42,20 +42,17 @@ function ContentComponent() {
                 setData(resultFilter.filter((element, index) => {
                     return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice
                 }))
-                setPageIndex(1);
             })
         }
         else if (productType !== "") {
             setData(productList.filter((element, index) => {
                 return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice && element.type == productType
             }));
-            setPageIndex(1);
         }
         else {
             setData(productList.filter((element, index) => {
                 return element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice
             }));
-            setPageIndex(1);
         }
 
         setPageAmount(Math.ceil(data.length / limit));
