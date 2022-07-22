@@ -11,14 +11,14 @@ import { Input, Row, Col, List, ListInlineItem } from "reactstrap";
 import logoImg from "../../app/image/logo.PNG";
 import LoginModal from "../modals/LoginModal";
 import { auth } from "../../firebase";
-import { useParams, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 function HeaderComponent() {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
-    const { user, keyword } = useSelector((reduxData) => reduxData.reducers);
+    const { user } = useSelector((reduxData) => reduxData.reducers);
 
     const onBtnLogInClick = () => {
         dispatch({
