@@ -101,7 +101,7 @@ function HeaderComponent() {
             });
         });
 
-        fetch("http://localhost:8000/productTypes")
+        fetch("https://shop24-backend.herokuapp.com/productTypes" || "http://localhost:8000/productTypes")
             .then(response => response.json())
             .then(result => {
                 setProductType(result.data);
