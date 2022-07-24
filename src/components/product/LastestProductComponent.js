@@ -8,7 +8,7 @@ function LastestProductComponent() {
 
     const [lastestProduct, setLastestProduct] = useState(null);
     useEffect(() => {
-        fetch("http://localhost:8000/products")
+        fetch("https://shop24-backend.herokuapp.com/products" || "http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
                 setLastestProduct(result.data);
