@@ -12,7 +12,7 @@ function MenuProductComponent() {
     const navigate = useNavigate();
 
     const onAllProductClick = () => {
-        fetch("http://localhost:8000/products")
+        fetch("https://shop24-backend.herokuapp.com/products" || "http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
                 dispatch({
@@ -47,7 +47,7 @@ function MenuProductComponent() {
     const [productType, setProductType] = React.useState(null);
 
     React.useEffect(() => {
-        fetch("http://localhost:8000/products")
+        fetch("https://shop24-backend.herokuapp.com/products" || "http://localhost:8000/products")
             .then(response => response.json())
             .then(result => {
                 dispatch({
@@ -65,7 +65,7 @@ function MenuProductComponent() {
             })
             .catch(error => console.log('error', error));
 
-        fetch("http://localhost:8000/productTypes")
+        fetch("https://shop24-backend.herokuapp.com/productTypes" ||"http://localhost:8000/productTypes")
             .then(response => response.json())
             .then(result => {
                 setProductType(result.data);
