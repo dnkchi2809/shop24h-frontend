@@ -59,10 +59,10 @@ function ProductDetail() {
     }
 
     useEffect(() => {
-        fetch("https://shop24-backend.herokuapp.com/products/" + productId ||"http://localhost:8000/products/" + productId)
+        fetch("https://shop24-backend.herokuapp.com/products/" + productId || "http://localhost:8000/products/" + productId)
             .then(response => response.json())
             .then(result => {
-                setProductInfo(result.data);
+                setProductInfo(result);
 
                 dispatch({
                     type: "SET_PRODUCT_TYPE",
