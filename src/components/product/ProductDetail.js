@@ -62,7 +62,7 @@ function ProductDetail() {
         fetch("https://shop24-backend.herokuapp.com/products/" + productId || "http://localhost:8000/products/" + productId)
             .then(response => response.json())
             .then(result => {
-                setProductInfo(result);
+                setProductInfo(result.data);
 
                 dispatch({
                     type: "SET_PRODUCT_TYPE",
