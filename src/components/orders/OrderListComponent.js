@@ -39,7 +39,7 @@ function OrderListComponents() {
                             orderList.map((element, index) => {
                                 return (
                                     <TableRow>
-                                        <TableCell sx={{ width: "20%" }}><img src={element.info.imageUrl} style={{ width: "100%" }} /></TableCell>
+                                        <TableCell sx={{ width: "8%" }}><img src={element.info.imageUrl} style={{ width: "100%" }} /></TableCell>
                                         <TableCell>{element.info.name}</TableCell>
                                         <TableCell className="text-center" id="element.info._id">
                                             <i class="fas fa-minus-circle fa-1x" style={{ marginRight: "2%" }} onClick={onBtnMinusProductClick}></i>

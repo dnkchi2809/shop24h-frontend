@@ -116,10 +116,10 @@ function HeaderComponent() {
 
     return (
         <>
-            <Grid style={{ backgroundColor: "black", color: "white"}} className="pb-1 fixed-top">
+            <Grid style={{ backgroundColor: "black", color: "white" }} className="pb-1 fixed-top">
                 <Container className="mb-2">
-                    <Row >
-                        <Col className="col-8 m-0 p-0">
+                    <Row>
+                        <Col className="col-6">
                             <List type="inline">
                                 <ListInlineItem>
                                     <Button variant="text" sx={{ padding: "0%" }}>
@@ -137,19 +137,9 @@ function HeaderComponent() {
                                         </a>
                                     </Button>
                                 </ListInlineItem>
-                                <ListInlineItem>
-                                    <Button variant="text" sx={{ color: "white" }} onClick={() => console.log("Contact Us")}>
-                                        <i class="fa-solid fa-phone"></i>
-                                        Contact Us
-                                    </Button>
-                                </ListInlineItem>
-                                <ListInlineItem>
-                                    <i className="fa-brands fa-facebook m-2 fa-lg"></i>&nbsp;
-                                    <i className="fa-brands fa-instagram m-2 fa-lg"></i>&nbsp;
-                                </ListInlineItem>
                             </List>
                         </Col>
-                        <Col className="d-flex justify-content-end p-0 m-0 col-4 ">
+                        <Col className="d-flex justify-content-end col-6 ">
                             <Row>
                                 {
                                     user
@@ -161,7 +151,7 @@ function HeaderComponent() {
                                                         <p className='pt-2'>Hello, {user.displayName}</p>
                                                     </Col>
                                                     <Col className='col-2 p-1'>
-                                                        <img src={user.photoURL} style={{ width: "100%", borderRadius: "50%" }} onClick={onAvatarClick} />
+                                                        <img src={user.photoURL} style={{ width: "90%", borderRadius: "50%" }} onClick={onAvatarClick} />
                                                     </Col>
                                                 </Row>
                                             </Col>
@@ -194,7 +184,7 @@ function HeaderComponent() {
                     <Row className="p-0">
                         <Col className="col-2 d-flex justify-content-center align-items-center">
                             <a href="/" className="text-center">
-                                <img src={logoImg} style={{ width: "60%"}} />
+                                <img src={logoImg} style={{ width: "60%" }} />
                             </a>
                         </Col>
                         <Col className="col-8">
