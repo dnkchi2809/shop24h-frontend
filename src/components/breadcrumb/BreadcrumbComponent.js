@@ -34,7 +34,7 @@ function BreadcrumbComponent() {
     <div role="presentation">
       <Breadcrumbs aria-label="breadcrumb" className='mb-2'>
         <StyledBreadcrumb label="Home" icon={<HomeIcon fontSize="small" />} onClick={() => navigate("/")} />
-        <StyledBreadcrumb label="Products" deleteIcon={<ExpandMoreIcon />} onClick={() => navigate("/products")}/>
+        <StyledBreadcrumb label="Products" onClick={() => navigate("/products")}/>
       </Breadcrumbs>
     </div>
   );

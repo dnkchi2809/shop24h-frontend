@@ -5,7 +5,8 @@ const initialState = {
     productList: [],
     lowPrice: 0,
     highPrice: 999999999999,
-    productType: ""
+    productType: "",
+    selectedProduct: []
 }
 
 const appReducer = (state = initialState, action) => {
@@ -50,6 +51,12 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 productType: action.payload.productType
+            };
+            break;
+        case "SELECT_PRODUCT":
+            return {
+                ...state,
+                selectedProduct: action.payload.selectedProduct
             };
             break;
         default:

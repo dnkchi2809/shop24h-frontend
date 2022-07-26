@@ -91,6 +91,10 @@ function HeaderComponent() {
         navigate("/products?name=" + input)
     }
 
+    const onBtnOrderCartClick = () => {
+        navigate("/orders")
+    }
+
     useEffect(() => {
         auth.onAuthStateChanged((result) => {
             dispatch({
@@ -112,15 +116,15 @@ function HeaderComponent() {
 
     return (
         <>
-            <Grid style={{ backgroundColor: "black", color: "white" }} className="fixed-top">
-                <Container className="mb-2 mt-1">
-                    <Row style={{ height: "35px" }}>
-                        <Col className="m-0 p-0">
+            <Grid style={{ backgroundColor: "black", color: "white"}} className="pb-1 fixed-top">
+                <Container className="mb-2">
+                    <Row >
+                        <Col className="col-8 m-0 p-0">
                             <List type="inline">
                                 <ListInlineItem>
                                     <Button variant="text" sx={{ padding: "0%" }}>
                                         <a style={{ color: "white", textDecoration: "none" }} href='/'>
-                                            <i class="fa-solid fa-house"></i>&nbsp;
+                                            <i class="fa-solid fa-house"></i>
                                             Home
                                         </a>
                                     </Button>
@@ -128,14 +132,14 @@ function HeaderComponent() {
                                 <ListInlineItem>
                                     <Button variant="text">
                                         <a style={{ color: "white", textDecoration: "none" }} href='/products'>
-                                            <i class="fas fa-list"></i>&nbsp;
+                                            <i class="fas fa-list"></i>
                                             Products
                                         </a>
                                     </Button>
                                 </ListInlineItem>
                                 <ListInlineItem>
                                     <Button variant="text" sx={{ color: "white" }} onClick={() => console.log("Contact Us")}>
-                                        <i class="fa-solid fa-phone"></i>&nbsp;
+                                        <i class="fa-solid fa-phone"></i>
                                         Contact Us
                                     </Button>
                                 </ListInlineItem>
@@ -145,7 +149,7 @@ function HeaderComponent() {
                                 </ListInlineItem>
                             </List>
                         </Col>
-                        <Col className="d-flex justify-content-end p-0 m-0">
+                        <Col className="d-flex justify-content-end p-0 m-0 col-4 ">
                             <Row>
                                 {
                                     user
@@ -190,15 +194,15 @@ function HeaderComponent() {
                     <Row className="p-0">
                         <Col className="col-2 d-flex justify-content-center align-items-center">
                             <a href="/" className="text-center">
-                                <img src={logoImg} style={{ width: "60%", objectFit: "contain" }} />
+                                <img src={logoImg} style={{ width: "60%"}} />
                             </a>
                         </Col>
                         <Col className="col-8">
                             <Row style={{ backgroundColor: "white" }} className="mt-3">
-                                <Col className="col-11">
+                                <Col className="col-11 p-0">
                                     <Input placeholder="What are you looking for?" style={{ border: "none" }} onInput={onInputSearchChange} onKeyPress={onInputSearchEnter} />
                                 </Col>
-                                <Col className="col-1 mt-1 text-center">
+                                <Col className="col-1 mt-1 text-center p-0 ">
                                     <i class="fa-solid fa-magnifying-glass text-primary" onClick={onSearchButtonClick}></i>
                                 </Col>
                             </Row>
@@ -228,7 +232,7 @@ function HeaderComponent() {
                         </Col>
                         <Col className="col-1" style={{ marginLeft: "3%" }}>
                             <Row className="mt-3 ">
-                                <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                                <i class="fa-solid fa-cart-shopping fa-2x" onClick={onBtnOrderCartClick}></i>
                             </Row>
                             <Row>
 

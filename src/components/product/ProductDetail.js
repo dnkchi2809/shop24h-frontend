@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Col, Container, Input, Row } from "reactstrap";
-import { Grid, Typography } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { Button, Col, Input, Row } from "reactstrap";
+import { Grid, } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 
 function ProductDetail() {
     const param = useParams();
 
     const dispatch = useDispatch();
+
+    const { selectedProduct } = useSelector((reduxData) => reduxData.reducers);
 
     const productId = param.productId;
 
@@ -44,11 +46,11 @@ function ProductDetail() {
 
     const onInputAmountChange = (event) => {
         let maxAmount = productInfo.amount;
-        if(event.target.value < 0 || event.target.value === ""){
+        if (event.target.value < 0 || event.target.value === "") {
             setAmount(0);
             setNoti(false);
         }
-        else if(event.target.value > maxAmount){
+        else if (event.target.value > maxAmount) {
             setAmount(maxAmount);
             setNoti(true);
         }
@@ -56,6 +58,41 @@ function ProductDetail() {
             setAmount(event.target.value);
             setNoti(false);
         }
+    }
+
+    const onBtnAddToCartClick = () => {
+        let newSelect = {
+            product: productId,
+            amount: amount,
+            info : productInfo
+        }
+
+        let orderList = JSON.parse(localStorage.getItem("orderList")) || [];
+
+        if (orderList.length >= 1) {
+            const productExit = orderList.find(element => element.product == newSelect.product);
+
+            if(Boolean(productExit)){
+                productExit.amount += newSelect.amount
+            }
+            else{
+                orderList.push(newSelect);
+            }
+        }
+        else{
+            console.log("false")
+            orderList.push(newSelect);
+        }
+
+        console.log(orderList);
+
+        /*dispatch({
+            type: "SELECT_PRODUCT",
+            payload: {
+                selectedProduct: selectedProduct
+            }
+        })*/
+        localStorage.setItem("orderList",JSON.stringify(orderList))
     }
 
     useEffect(() => {
@@ -100,15 +137,15 @@ function ProductDetail() {
                                         <i class="fas fa-plus-circle fa-2x" style={{ marginLeft: "2%" }} onClick={onBtnAddProductClick}></i>
                                         {
                                             noti
-                                            ?
-                                            <p style={{ marginLeft: "2%", color: "blue" }}>The number of products in stock is {productInfo.amount}</p>
-                                            :
-                                            null
+                                                ?
+                                                <p style={{ marginLeft: "2%", color: "blue" }}>The number of products in stock is {productInfo.amount}</p>
+                                                :
+                                                null
                                         }
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
-                                    <Button className="btn btn-dark btn-lg p-3" style={{ width: "30%" }}><i class="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
+                                    <Button className="btn btn-dark btn-lg p-3" style={{ width: "30%" }} onClick={onBtnAddToCartClick}><i class="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
                                 </Row>
                             </Col>
                         </>

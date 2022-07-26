@@ -3,15 +3,11 @@
   display: none;
 }
 
-body{
-  position:inherit;
-}
-
 .new-price {
   font-size: medium;
   font-weight: bold;
   text-decoration-line: none;
-  color:cornflowerblue;
+  color: cornflowerblue;
 }
 
 .old-price {
