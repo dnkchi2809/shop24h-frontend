@@ -24,7 +24,7 @@ function ProductFilterComponent() {
                 }
             })
         }
-        else{
+        else {
             dispatch({
                 type: "SET_PRICE_HIGH",
                 payload: {
@@ -42,17 +42,16 @@ function ProductFilterComponent() {
                     <b>Price</b>
                 </MenuItem>
                 <MenuItem>
-                    <Row>
-                        <Col className='col-5'>
-                            <input className='w-100' onInput={onPriceLowestInput} />
-                        </Col>
-                        <Col className='col-2 text-center'>
-                            -
-                        </Col>
-                        <Col className='col-5'>
-                            <input className='w-100' onInput={onPriceHighestInput} />
-                        </Col>
-                    </Row>
+                    Min Price
+                </MenuItem>
+                <MenuItem>
+                    <input className='w-100' onInput={onPriceLowestInput} />
+                </MenuItem>
+                <MenuItem>
+                    Max Price
+                </MenuItem>
+                <MenuItem>
+                    <input className='w-100' onInput={onPriceHighestInput} />
                 </MenuItem>
             </MenuList>
         </>
