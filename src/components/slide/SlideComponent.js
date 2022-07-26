@@ -12,7 +12,7 @@ function SlideComponent() {
 
     return (
         <>
-            <Container style={{ marginTop: "10%" }}>
+            <Container>
                 <Row className="align-items-center">
                     <Col className="col-6 p-5">
                         <Row>

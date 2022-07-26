@@ -10,7 +10,7 @@ function ProductList() {
     return (
         <>
             <HeaderComponent/>
-            <Container>
+            <Container className = "mt-1">
                 <BreadcrumbComponent className="mb-5" />
                 <Row>
                     <Col className="col-3">

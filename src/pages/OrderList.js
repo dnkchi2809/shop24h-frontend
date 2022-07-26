@@ -8,7 +8,7 @@ function OrderList() {
     return (
         <>
             <HeaderComponent />
-            <Container style={{ marginTop: "11%" }}>
+            <Container className="mt-2">
                 <BreadcrumbComponent/>
                 <OrderListComponents />
             </Container>

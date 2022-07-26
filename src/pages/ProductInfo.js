@@ -9,7 +9,7 @@ function ProductInfo() {
     return (
         <>
             <HeaderComponent />
-            <Container style={{ marginTop: "11%" }}>
+            <Container className="mt-1">
                 <BreadcrumbComponent className="mb-5" />
                 <ProductDetail />
                 <SimilarProductComponent />

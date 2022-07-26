@@ -116,8 +116,8 @@ function HeaderComponent() {
 
     return (
         <>
-            <Grid style={{ backgroundColor: "black", color: "white" }} className="pb-1 fixed-top">
-                <Container className="mb-2">
+            <Grid style={{ backgroundColor: "black", color: "white" }} >
+                <Container>
                     <Row>
                         <Col className="col-6">
                             <List type="inline">
@@ -139,8 +139,8 @@ function HeaderComponent() {
                                 </ListInlineItem>
                             </List>
                         </Col>
-                        <Col className="d-flex justify-content-end col-6 ">
-                            <Row>
+                        <Col className="d-flex justify-content-end col-6">
+                            <Row style={{marginRight : "2%"}}>
                                 {
                                     user
                                         ?
@@ -151,7 +151,7 @@ function HeaderComponent() {
                                                         <p className='pt-2'>Hello, {user.displayName}</p>
                                                     </Col>
                                                     <Col className='col-2 p-1'>
-                                                        <img src={user.photoURL} style={{ width: "90%", borderRadius: "50%" }} onClick={onAvatarClick} />
+                                                        <img src={user.photoURL} style={{ width: "100%", borderRadius: "50%" }} onClick={onAvatarClick} />
                                                     </Col>
                                                 </Row>
                                             </Col>

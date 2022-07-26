@@ -7,7 +7,7 @@ function Home() {
     return (
         <>
             <HeaderComponent />
-            <SlideComponent />
+            <SlideComponent/>
             <LastestProductComponent />
             <FooterComponent/>
         </>
