@@ -6,14 +6,12 @@ import React, { useState } from "react";
 
 import { auth, googleProvider } from "../../firebase"
 
-
 function LoginModal(props) {
     const style = {
         position: 'absolute',
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: '27%',
         border: '0px solid #000',
         borderRadius: '5px',
         backgroundColor: "white",
@@ -56,7 +54,7 @@ function LoginModal(props) {
     return (
         <>
             <Modal open={openLoginModal} onClose={handleModalClose}>
-                <Box style={style}>
+                <Box style={style} className="modal-style">
                     <Container>
                         <Row>
                             <Button color="primary" style={{ borderRadius: "25px" }} onClick={onBtnLoginGoogleClick}><i class="fab fa-google"></i> &nbsp; Sign in with <b>Google</b></Button>
