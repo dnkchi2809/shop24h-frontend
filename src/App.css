@@ -42,6 +42,10 @@ input[type=number] {
   .modal-style {
     width: 70%;
   }
+
+  .btn-viewall {
+    width: 30%;
+  }
 }
 
 /* #### Mobile Phones Landscape #### */
@@ -50,6 +54,10 @@ input[type=number] {
   /* some CSS here */
   .modal-style {
     width: 50%;
+  }
+
+  .btn-viewall {
+    width: 30%;
   }
 }
 
@@ -60,6 +68,10 @@ input[type=number] {
   .modal-style {
     width: 50%;
   }
+
+  .btn-viewall {
+    width: 30%;
+  }
 }
 
 /* #### iPhone 4+ Portrait or Landscape #### */
@@ -68,6 +80,10 @@ input[type=number] {
   /* some CSS here */
   .modal-style {
     width: 50%;
+  }
+
+  .btn-viewall {
+    width: 30%;
   }
 }
 
@@ -78,6 +94,10 @@ input[type=number] {
   .modal-style {
     width: 50%;
   }
+
+  .btn-viewall {
+    width: 30%;
+  }
 }
 
 /* #### iPhone 6 and 6 plus Portrait or Landscape #### */
@@ -86,6 +106,10 @@ input[type=number] {
   /* some CSS here */
   .modal-style {
     width: 50%;
+  }
+
+  .btn-viewall {
+    width: 30%;
   }
 }
 
@@ -96,6 +120,10 @@ input[type=number] {
   .modal-style {
     width: 35%;
   }
+
+  .btn-viewall {
+    width: 20%;
+  }
 }
 
 /* #### Desktops #### */
@@ -104,5 +132,9 @@ input[type=number] {
   /* some CSS here */
   .modal-style {
     width: 30%;
+  }
+
+  .btn-viewall {
+    width: 15%;
   }
 }

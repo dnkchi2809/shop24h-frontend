@@ -41,14 +41,12 @@ function LastestProductComponent() {
                             null
                     }
                 </Row>
-                <Row className="justify-content-center mt-4 mb-5">
-                    <Col className="col-2">
-                        <btn className="btn btn-dark w-100">
-                            <a style={{ color: "white", textDecoration: "none" }} href='/products'>
-                                VIEW ALL
-                            </a>
-                        </btn>
-                    </Col>
+                <Row className="d-flex justify-content-center mt-4 mb-5">
+                    <btn className="btn btn-dark btn-viewall">
+                        <a style={{ color: "white", textDecoration: "none" }} href='/products'>
+                            VIEW ALL
+                        </a>
+                    </btn>
                 </Row>
             </Container>
         </>
