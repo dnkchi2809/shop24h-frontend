@@ -35,71 +35,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* #### Mobile Phones Portrait #### */
-@media screen and (max-device-width: 480px) and (orientation: portrait) {
-
-  /* some CSS here */
-  .modal-style {
-    width: 70%;
-  }
-
-  .btn-viewall {
-    width: 30%;
-  }
-}
-
-/* #### Mobile Phones Landscape #### */
-@media screen and (max-device-width: 640px) and (orientation: landscape) {
-
-  /* some CSS here */
-  .modal-style {
-    width: 50%;
-  }
-
-  .btn-viewall {
-    width: 30%;
-  }
-}
-
-/* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px) {
-
-  /* some CSS here */
-  .modal-style {
-    width: 50%;
-  }
-
-  .btn-viewall {
-    width: 30%;
-  }
-}
-
-/* #### iPhone 4+ Portrait or Landscape #### */
-@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-
-  /* some CSS here */
-  .modal-style {
-    width: 50%;
-  }
-
-  .btn-viewall {
-    width: 30%;
-  }
-}
-
-/* #### iPhone 5 Portrait or Landscape #### */
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
-
-  /* some CSS here */
-  .modal-style {
-    width: 50%;
-  }
-
-  .btn-viewall {
-    width: 30%;
-  }
-}
-
 /* #### iPhone 6 and 6 plus Portrait or Landscape #### */
 @media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
 
@@ -114,6 +49,15 @@ input[type=number] {
 
   .btn-addcart{
     width: 40%;
+  }
+
+  .new-price {
+    font-size: 200%;
+  }
+  
+  .old-price {
+    font-size: 200%;
+    margin-right: 2% 
   }
 }
 
@@ -132,6 +76,15 @@ input[type=number] {
   .btn-addcart{
     width: 40%;
   }
+
+  .new-price {
+    font-size: 200%;
+  }
+  
+  .old-price {
+    font-size: 200%;
+    margin-right: 2% 
+  }
 }
 
 /* #### Desktops #### */
@@ -148,5 +101,14 @@ input[type=number] {
 
   .btn-addcart{
     width: 30%;
+  }
+
+  .new-price {
+    font-size: 250%;
+  }
+  
+  .old-price {
+    font-size: 250%;
+    margin-right: 2% 
   }
 }

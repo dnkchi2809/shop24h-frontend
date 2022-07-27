@@ -126,8 +126,8 @@ function ProductDetail() {
                                 <Row className="mt-1 display-6"><b>{productInfo.name}</b></Row>
                                 <Row className="mt-3">
                                     <Col>
-                                        <a className="old-price" style={{ fontSize: "250%", marginRight: "2%" }}>${productInfo.buyPrice}</a>&nbsp;
-                                        <a className="new-price" style={{ fontSize: "250%" }}>${productInfo.promotionPrice}</a>
+                                        <a className="old-price">${productInfo.buyPrice}</a>&nbsp;
+                                        <a className="new-price">${productInfo.promotionPrice}</a>
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
