@@ -85,6 +85,10 @@ input[type=number] {
     font-size: 200%;
     margin-right: 2% 
   }
+
+  .logo-style{
+    width : 70%
+  }
 }
 
 /* #### Desktops #### */
@@ -104,11 +108,19 @@ input[type=number] {
   }
 
   .new-price {
-    font-size: 250%;
+    font-size: 130%;
   }
   
   .old-price {
-    font-size: 250%;
+    font-size: 130%;
     margin-right: 2% 
+  }
+
+  .btn-payment{
+    font-size: 110%;
+  }
+
+  .logo-style{
+    width : 60%
   }
 }

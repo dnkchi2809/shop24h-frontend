@@ -32,9 +32,9 @@ function FooterComponent() {
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Warranty</a><br />
                             <a className="text-secondary" href="#" style={{ textDecoration: "none" }}>Order Status</a><br />
                         </Col>
-                        <Col className="col-3 justify-content-center">
+                        <Col className="col-3 justify-content-center align-items-center">
                             <Row className="justify-content-center">
-                                <img src={logoImg} style={{ width: "50%" }} />
+                                <img src={logoImg} className="logo-style" />
                             </Row>
                             <Row>
                                 <Col className="d-flex justify-content-center">

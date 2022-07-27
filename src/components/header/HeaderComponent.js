@@ -12,6 +12,7 @@ import logoImg from "../../app/image/logo.PNG";
 import LoginModal from "../modals/LoginModal";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom"
+import SigninModal from '../modals/SigninModal';
 
 function HeaderComponent() {
     const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function HeaderComponent() {
     const navigate = useNavigate();
 
     const { user } = useSelector((reduxData) => reduxData.reducers);
+    //const [localUser, setLocalUser] = useState(JSON.parse(localStorage.getItem("user") || []))
 
     const onBtnLogInClick = () => {
         dispatch({
@@ -119,12 +121,12 @@ function HeaderComponent() {
             <Grid style={{ backgroundColor: "black", color: "white" }} >
                 <Container>
                     <Row>
-                        <Col className="col-6">
-                            <List type="inline">
+                        <Col>
+                            <List type="inline" className='m-0'>
                                 <ListInlineItem>
                                     <Button variant="text" sx={{ padding: "0%" }}>
                                         <a style={{ color: "white", textDecoration: "none" }} href='/'>
-                                            <i class="fa-solid fa-house"></i>
+                                            <i className="fa-solid fa-house"></i>
                                             Home
                                         </a>
                                     </Button>
@@ -132,28 +134,28 @@ function HeaderComponent() {
                                 <ListInlineItem>
                                     <Button variant="text">
                                         <a style={{ color: "white", textDecoration: "none" }} href='/products'>
-                                            <i class="fas fa-list"></i>
+                                            <i className="fas fa-list"></i>
                                             Products
                                         </a>
                                     </Button>
                                 </ListInlineItem>
                             </List>
                         </Col>
-                        <Col className="d-flex justify-content-end col-6">
-                            <Row style={{marginRight : "2%"}}>
+                        <Col className="d-flex justify-content-end">
+                            <Row className="m-0">
                                 {
                                     user
                                         ?
                                         <>
-                                            <Col className="p-0 m-0">
-                                                <Row className=' d-flex justify-content-center align-items-center'>
-                                                    <Col className='col-10 d-flex justify-content-end'>
-                                                        <p className='pt-2'>Hello, {user.displayName}</p>
-                                                    </Col>
-                                                    <Col className='col-2 p-1'>
-                                                        <img src={user.photoURL} style={{ width: "100%", borderRadius: "50%" }} onClick={onAvatarClick} />
-                                                    </Col>
-                                                </Row>
+                                            <Col>
+                                                <List type="inline" className='m-0'>
+                                                    <ListInlineItem>
+                                                        <p className='mt-2 mb-0'>Hello {user.displayName || user.userName}</p>
+                                                    </ListInlineItem>
+                                                    <ListInlineItem>
+                                                        <i className="fas fa-user-circle fa-lg" style={{ width: "100%" }} onClick={onAvatarClick}></i>
+                                                    </ListInlineItem>
+                                                </List>
                                             </Col>
                                             <Menu
                                                 id="fade-menu"
@@ -181,7 +183,7 @@ function HeaderComponent() {
                             </Row>
                         </Col>
                     </Row>
-                    <Row className="p-0">
+                    <Row className="m-0 pb-1">
                         <Col className="col-2 d-flex justify-content-center align-items-center">
                             <a href="/" className="text-center">
                                 <img src={logoImg} style={{ width: "60%" }} />
@@ -193,7 +195,7 @@ function HeaderComponent() {
                                     <Input placeholder="What are you looking for?" style={{ border: "none" }} onInput={onInputSearchChange} onKeyPress={onInputSearchEnter} />
                                 </Col>
                                 <Col className="col-1 mt-1 text-center p-0 ">
-                                    <i class="fa-solid fa-magnifying-glass text-primary" onClick={onSearchButtonClick}></i>
+                                    <i className="fa-solid fa-magnifying-glass text-primary" onClick={onSearchButtonClick}></i>
                                 </Col>
                             </Row>
                             <Row className="mt-1">
@@ -222,7 +224,7 @@ function HeaderComponent() {
                         </Col>
                         <Col className="col-1" style={{ marginLeft: "3%" }}>
                             <Row className="mt-3 ">
-                                <i class="fa-solid fa-cart-shopping fa-2x" onClick={onBtnOrderCartClick}></i>
+                                <i className="fa-solid fa-cart-shopping fa-2x" onClick={onBtnOrderCartClick}></i>
                             </Row>
                             <Row>
 
@@ -234,6 +236,7 @@ function HeaderComponent() {
 
             {/* Modals */}
             <LoginModal />
+            <SigninModal />
         </>
     )
 }

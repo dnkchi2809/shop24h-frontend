@@ -126,15 +126,15 @@ function ProductDetail() {
                                 <Row className="mt-1 display-6"><b>{productInfo.name}</b></Row>
                                 <Row className="mt-3">
                                     <Col>
-                                        <a className="old-price">${productInfo.buyPrice}</a>&nbsp;
-                                        <a className="new-price">${productInfo.promotionPrice}</a>
+                                        <a className="old-price" style={{ fontSize: "250%", marginRight: "2%" }}>${productInfo.buyPrice}</a>&nbsp;
+                                        <a className="new-price" style={{ fontSize: "250%" }}>${productInfo.promotionPrice}</a>
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
                                     <Col className="d-flex">
-                                        <i class="fas fa-minus-circle fa-2x" style={{ marginRight: "2%" }} onClick={onBtnMinusProductClick}></i>
+                                        <i className="fas fa-minus-circle fa-2x" style={{ marginRight: "2%" }} onClick={onBtnMinusProductClick}></i>
                                         <Input type="number" value={amount} onInput={onInputAmountChange} style={{ width: "100px" }} />
-                                        <i class="fas fa-plus-circle fa-2x" style={{ marginLeft: "2%" }} onClick={onBtnAddProductClick}></i>
+                                        <i className="fas fa-plus-circle fa-2x" style={{ marginLeft: "2%" }} onClick={onBtnAddProductClick}></i>
                                         {
                                             noti
                                                 ?
@@ -145,7 +145,7 @@ function ProductDetail() {
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
-                                    <Button className="btn btn-dark btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i class="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
+                                    <Button className="btn btn-dark btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i className="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
                                 </Row>
                             </Col>
                         </>
