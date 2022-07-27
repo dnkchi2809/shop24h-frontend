@@ -225,6 +225,7 @@ function HeaderComponent() {
                         <Col className="col-1" style={{ marginLeft: "3%" }}>
                             <Row className="mt-3 ">
                                 <i className="fa-solid fa-cart-shopping fa-2x" onClick={onBtnOrderCartClick}></i>
+                                <span class='badge badge-warning' id='lblCartCount'> 5 </span>
                             </Row>
                             <Row>
 

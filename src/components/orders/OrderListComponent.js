@@ -20,7 +20,7 @@ function OrderListComponents() {
         orderList.map((element, index) => {
             if (element.product == param.product) {
                 element.amount = param.amount - 1;
-                if (itemTotal > 0 && element.amount >= 0) {
+                if (itemTotal > 0 && element.amount >= 0 && Boolean(selectItem.find(item => item.product == element.product)) == true) {
                     let newTotal = itemTotal - param.info.promotionPrice;
                     setItemTotal(newTotal);
                 }
@@ -35,13 +35,15 @@ function OrderListComponents() {
     const onBtnAddProductClick = (param) => {
         orderList.map((element, index) => {
             if (element.product == param.product) {
-                element.amount = param.amount + 1;
-                if (itemTotal > 0 && element.amount <= param.info.amount) {
+                if (itemTotal > 0 && element.amount <= param.info.amount && Boolean(selectItem.find(item => item.product == element.product)) == true) {
                     let newTotal = itemTotal + param.info.promotionPrice;
                     setItemTotal(newTotal);
                 }
                 if (element.amount >= param.info.amount) {
                     element.amount = param.info.amount
+                }
+                else {
+                    element.amount = param.amount + 1;
                 }
             }
         })
@@ -57,6 +59,27 @@ function OrderListComponents() {
         localStorage.setItem("orderList", JSON.stringify(orderList));
     }
 
+    const onSelectAllItem = (event) => {
+        let total = 0;
+        let arraySelectedItem = [];
+        if (event.target.checked) {
+            orderList.map((element, index) => {
+                total += element.info.promotionPrice * element.amount
+                arraySelectedItem.push(element)
+                document.getElementById(element.product).checked = true
+            })
+        }
+        else {
+            orderList.map((element, index) => {
+                document.getElementById(element.product).checked = false
+            })
+            total = 0;
+            arraySelectedItem = []
+        }
+        setItemTotal(total);
+        setSelectItem(arraySelectedItem);
+    }
+
     const onSelectItem = (event) => {
         let total = itemTotal;
         let arraySelectedItem = selectItem;
@@ -68,7 +91,8 @@ function OrderListComponents() {
                 }
                 if (!event.target.checked) {
                     total -= element.info.promotionPrice * element.amount;
-                    arraySelectedItem.splice(index, 1)
+                    arraySelectedItem.splice(index, 1);
+                    document.getElementById("select-all-item").checked = false
                 }
             }
         })
@@ -112,7 +136,9 @@ function OrderListComponents() {
             <TableContainer className="mb-5">
                 <TableHead>
                     <TableRow>
-                        <TableCell className="text-center" sx={{ width: "5%" }}>Select</TableCell>
+                        <TableCell className="text-center" sx={{ width: "5%" }}>
+                            <input type="checkbox" onChange={onSelectAllItem} id="select-all-item" />
+                        </TableCell>
                         <TableCell className="text-center" sx={{ width: "8%" }}>Image</TableCell>
                         <TableCell className="text-center" sx={{ width: "35%" }}>Name</TableCell>
                         <TableCell className="text-center" sx={{ width: "10%" }}>Quantity</TableCell>
@@ -128,7 +154,7 @@ function OrderListComponents() {
                             orderList.map((element, index) => {
                                 return (
                                     <TableRow>
-                                        <TableCell sx={{ width: "5%" }} className="text-center"><input type="checkbox" onChange={onSelectItem} value={element.product} /></TableCell>
+                                        <TableCell sx={{ width: "5%" }} className="text-center"><input type="checkbox" onChange={onSelectItem} value={element.product} id={element.product}/></TableCell>
                                         <TableCell sx={{ width: "8%" }}><img src={element.info.imageUrl} style={{ width: "100%" }} /></TableCell>
                                         <TableCell sx={{ width: "35%" }}>{element.info.name}</TableCell>
                                         <TableCell sx={{ width: "10%" }} className="text-center">
