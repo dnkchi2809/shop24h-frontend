@@ -145,7 +145,7 @@ function ProductDetail() {
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
-                                    <Button className="btn btn-dark btn-lg p-3" style={{ width: "30%" }} onClick={onBtnAddToCartClick}><i class="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
+                                    <Button className="btn btn-dark btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i class="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
                                 </Row>
                             </Col>
                         </>
