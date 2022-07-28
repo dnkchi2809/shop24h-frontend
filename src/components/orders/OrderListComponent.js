@@ -1,9 +1,7 @@
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "reactstrap";
 import OrderModal from "../modals/OrderModal";
-
 
 function OrderListComponents() {
     const dispatch = useDispatch();
@@ -121,7 +119,6 @@ function OrderListComponents() {
             }
         }
         else {
-            //alert chưa chọn item
             alert("Chưa chọn item")
         }
     }
@@ -149,27 +146,25 @@ function OrderListComponents() {
                 </TableHead>
                 <TableBody>
                     {
-                        orderList.length >= 1
-                            ?
-                            orderList.map((element, index) => {
-                                return (
-                                    <TableRow>
-                                        <TableCell sx={{ width: "5%" }} className="text-center"><input type="checkbox" onChange={onSelectItem} value={element.product} id={element.product}/></TableCell>
-                                        <TableCell sx={{ width: "8%" }}><img src={element.info.imageUrl} style={{ width: "100%" }} /></TableCell>
-                                        <TableCell sx={{ width: "35%" }}>{element.info.name}</TableCell>
-                                        <TableCell sx={{ width: "10%" }} className="text-center">
-                                            <i className="fas fa-minus-circle fa-1x" style={{ marginRight: "2%" }} onClick={() => onBtnMinusProductClick(element)}></i>
-                                            &nbsp;{element.amount}&nbsp;
-                                            <i className="fas fa-plus-circle fa-1x" style={{ marginLeft: "2%" }} onClick={() => onBtnAddProductClick(element)}></i>
-                                        </TableCell>
-                                        <TableCell sx={{ width: "17%" }} className="text-center">{element.info.promotionPrice}</TableCell>
-                                        <TableCell sx={{ width: "15%" }} className="text-center">{element.info.promotionPrice * element.amount}</TableCell>
-                                        <TableCell sx={{ width: "10%" }} className="text-center"><i className="fas fa-trash-alt" onClick={() => onDeleteItemClick(element)}></i></TableCell>
-                                    </TableRow>
-                                )
-                            })
-                            :
-                            null
+
+                        orderList.map((element, index) => {
+                            return (
+                                <TableRow>
+                                    <TableCell sx={{ width: "5%" }} className="text-center"><input type="checkbox" onChange={onSelectItem} value={element.product} id={element.product} /></TableCell>
+                                    <TableCell sx={{ width: "8%" }}><img src={element.info.imageUrl} style={{ width: "100%" }} /></TableCell>
+                                    <TableCell sx={{ width: "35%" }}>{element.info.name}</TableCell>
+                                    <TableCell sx={{ width: "10%" }} className="text-center">
+                                        <i className="fas fa-minus-circle fa-1x" style={{ marginRight: "2%" }} onClick={() => onBtnMinusProductClick(element)}></i>
+                                        &nbsp;{element.amount}&nbsp;
+                                        <i className="fas fa-plus-circle fa-1x" style={{ marginLeft: "2%" }} onClick={() => onBtnAddProductClick(element)}></i>
+                                    </TableCell>
+                                    <TableCell sx={{ width: "17%" }} className="text-center">{element.info.promotionPrice}</TableCell>
+                                    <TableCell sx={{ width: "15%" }} className="text-center">{element.info.promotionPrice * element.amount}</TableCell>
+                                    <TableCell sx={{ width: "10%" }} className="text-center"><i className="fas fa-trash-alt" onClick={() => onDeleteItemClick(element)}></i></TableCell>
+                                </TableRow>
+                            )
+                        })
+
                     }
                     <TableRow>
                         <TableCell className="text-center">Total</TableCell>

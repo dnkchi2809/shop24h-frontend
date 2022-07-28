@@ -22,28 +22,42 @@ function LoginModal(props) {
 
     const { openLoginModal } = useSelector((reduxData) => reduxData.reducers);
 
+    const [ userLogin, setUserLogin ] = useState({
+        username: "",
+        password: ""
+    })
+
+    const userInfo = {
+        displayName: "",
+        email: "",
+        phone: ""
+    }
+
     const onBtnLoginGoogleClick = () => {
         auth.signInWithPopup(googleProvider)
             .then((result) => {
-                console.log(result);
-
-                dispatch({
+                //console.log(result);
+                /*dispatch({
                     type: "SET_USER",
                     payload: {
-                        user: result
+                        user: userInfo
                     }
-                });
+                });*/
+                userInfo.displayName = result.user.displayName;
+                userInfo.email = result.user.email;
+                userInfo.phone = result.user.phoneNumber;
+
+                let userArrayTemp = [];
+                userArrayTemp.push(userInfo)
+                localStorage.setItem("userInfo", JSON.stringify(userArrayTemp));
 
                 handleModalClose();
             })
             .catch((error) => {
                 console.log(error);
             })
-    }
 
-    const userLogin = {
-        username : "",
-        password : ""
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
     }
 
     const onUsernameInput = (event) => {
@@ -57,43 +71,52 @@ function LoginModal(props) {
     const onBtnLoginClick = () => {
         let validUser = validateUser(userLogin);
 
-        if(validUser){
+        if (validUser) {
             fetch("https://shop24-backend.herokuapp.com/customers?userName=" + userLogin.username)
-            .then((response) => response.json())
-            .then((data) => {
-                if(data.data.length >= 1){
-                    if(data.data[0].password == userLogin.password){
-                        dispatch({
-                            type: "SET_USER",
-                            payload: {
-                                user: data.data[0]
-                            }
-                        });
+                .then((response) => response.json())
+                .then((data) => {
+                    //console.log(data);
+                    if (data.data.length >= 1) {
+                        if (data.data[0].password == userLogin.password) {
+                            /*dispatch({
+                                type: "SET_USER",
+                                payload: {
+                                    user: userInfo
+                                }
+                            });*/
+                            userInfo.displayName = data.data[0].fullName;
+                            userInfo.email = data.data[0].email;
+                            userInfo.phone = data.data[0].phone;
+
+                            let userArrayTemp = [];
+                            userArrayTemp.push(userInfo)
+                            localStorage.setItem("userInfo", JSON.stringify(userArrayTemp));
+                        }
+                        else {
+                            alert("Wrong password");
+                        }
                     }
-                    else{
-                        alert("Wrong password");
+                    else {
+                        alert("Username is not exit");
                     }
-                }
-                else{
-                    alert("Username is not exit");
-                }
-                
-            })
+                })
+
             handleModalClose();
         }
     }
 
     const validateUser = (paramUser) => {
-        if(paramUser.username == "") {
+        console.log(paramUser);
+
+        if (paramUser.username == "") {
             alert("username is invalid");
             return false
         }
 
-        if(paramUser.password == "") {
+        if (paramUser.password == "") {
             alert("password is invalid");
             return false
         }
-
         return true
     }
 

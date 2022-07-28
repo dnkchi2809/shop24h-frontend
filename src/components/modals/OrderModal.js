@@ -66,15 +66,15 @@ function OrderModal(props) {
                     <Container>
                         <Row className="mt-3">
                             <Col className="col-3">Fullname:</Col>
-                            <Col>{props.user.displayName}</Col>
+                            <Col>{/*props.user.displayName*/}</Col>
                         </Row>
                         <Row className="mt-3">
                             <Col className="col-3">Phone:</Col>
-                            <Col>{props.user.phone}</Col>
+                            <Col>{/*props.user.phone*/}</Col>
                         </Row>
                         <Row className="mt-3">
                             <Col className="col-3">Email:</Col>
-                            <Col>{props.user.email}</Col>
+                            <Col>{/*props.user.email*/}</Col>
                         </Row>
                         <Row className="mt-3">
                             <Col className="col-3">Total:</Col>

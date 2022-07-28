@@ -19,10 +19,12 @@ function HeaderComponent() {
 
     const navigate = useNavigate();
 
-    const { user } = useSelector((reduxData) => reduxData.reducers);
+    //const { user } = useSelector((reduxData) => reduxData.reducers);
+    const [user, setUser] = useState([])
+
     //const [localUser, setLocalUser] = useState(JSON.parse(localStorage.getItem("user") || []))
 
-    const [itemList,setItemList] = useState(0);
+    const [itemList, setItemList] = useState(0);
 
     const onBtnLogInClick = () => {
         dispatch({
@@ -46,6 +48,8 @@ function HeaderComponent() {
             .catch((error) => {
                 console.log(error);
             });
+            let userArrayTemp = [];
+            localStorage.setItem("userInfo", JSON.stringify(userArrayTemp));
 
         handleClose();
     }
@@ -95,10 +99,12 @@ function HeaderComponent() {
         navigate("/products?name=" + input)
     }
     useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem("userInfo")) || []);
+
         let orderList = JSON.parse(localStorage.getItem("orderList")) || [];
         setItemList(orderList.length)
     });
-    
+
     useEffect(() => {
         auth.onAuthStateChanged((result) => {
             dispatch({
@@ -115,7 +121,7 @@ function HeaderComponent() {
                 setProductType(result.data);
             })
             .catch(error => console.log('error', error));
-    },[])
+    }, [])
 
 
     return (
@@ -146,13 +152,13 @@ function HeaderComponent() {
                         <Col className="d-flex justify-content-end">
                             <Row className="m-0">
                                 {
-                                    user
+                                    user.length >= 1
                                         ?
                                         <>
                                             <Col>
                                                 <List type="inline" className='m-0'>
                                                     <ListInlineItem>
-                                                        <p className='mt-2 mb-0'>Hello {user.displayName || user.userName}</p>
+                                                        <p className='mt-2 mb-0'>Hello, {user[0].displayName}</p>
                                                     </ListInlineItem>
                                                     <ListInlineItem>
                                                         <i className="fas fa-user-circle fa-lg" style={{ width: "100%" }} onClick={onAvatarClick}></i>
