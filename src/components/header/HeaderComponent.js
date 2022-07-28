@@ -22,6 +22,8 @@ function HeaderComponent() {
     const { user } = useSelector((reduxData) => reduxData.reducers);
     //const [localUser, setLocalUser] = useState(JSON.parse(localStorage.getItem("user") || []))
 
+    const [itemList,setItemList] = useState(0);
+
     const onBtnLogInClick = () => {
         dispatch({
             type: "LOGIN_MODAL",
@@ -92,11 +94,11 @@ function HeaderComponent() {
         });
         navigate("/products?name=" + input)
     }
-
-    const onBtnOrderCartClick = () => {
-        navigate("/orders")
-    }
-
+    useEffect(() => {
+        let orderList = JSON.parse(localStorage.getItem("orderList")) || [];
+        setItemList(orderList.length)
+    });
+    
     useEffect(() => {
         auth.onAuthStateChanged((result) => {
             dispatch({
@@ -113,7 +115,7 @@ function HeaderComponent() {
                 setProductType(result.data);
             })
             .catch(error => console.log('error', error));
-    }, [])
+    },[])
 
 
     return (
@@ -224,8 +226,12 @@ function HeaderComponent() {
                         </Col>
                         <Col className="col-1" style={{ marginLeft: "3%" }}>
                             <Row className="mt-3 ">
-                                <i className="fa-solid fa-cart-shopping fa-2x" onClick={onBtnOrderCartClick}></i>
-                                <span class='badge badge-warning' id='lblCartCount'> 5 </span>
+                                <a href="/orders" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+                                    <i className="fa-solid fa-cart-shopping fa-2x"></i>
+                                    <span class="cart-basket d-flex align-items-center justify-content-center">
+                                        {itemList}
+                                    </span>
+                                </a>
                             </Row>
                             <Row>
 
