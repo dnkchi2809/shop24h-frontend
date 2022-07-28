@@ -4,7 +4,8 @@ import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Chip from '@mui/material/Chip';
 import HomeIcon from '@mui/icons-material/Home';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const StyledBreadcrumb = styled(Chip)(({ theme }) => {
   const backgroundColor =
@@ -28,13 +29,36 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 
 
 function BreadcrumbComponent() {
+  const { breadcrumb1, breadcrumb2, breadcrumb3 } = useSelector((reduxData) => reduxData.reducers);
+
   const navigate = useNavigate();
 
   return (
     <div role="presentation">
       <Breadcrumbs aria-label="breadcrumb" className='mb-2'>
         <StyledBreadcrumb label="Home" icon={<HomeIcon fontSize="small" />} onClick={() => navigate("/")} />
-        <StyledBreadcrumb label="Products" onClick={() => navigate("/products")}/>
+        {
+          breadcrumb1 !== null
+            ?
+            <StyledBreadcrumb label={breadcrumb1} onClick={() => navigate("/" + breadcrumb1 )} />
+            :
+            null
+        }
+        {
+          breadcrumb2 !== null
+            ?
+            <StyledBreadcrumb label={breadcrumb2} onClick={() => navigate("/" + breadcrumb2 )} />
+            :
+            null
+        }
+        {
+          breadcrumb3 !== null
+            ?
+            <StyledBreadcrumb label={breadcrumb3} onClick={() => navigate("/" + breadcrumb3 )} />
+            :
+            null
+        }
+
       </Breadcrumbs>
     </div>
   );

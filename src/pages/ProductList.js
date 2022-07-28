@@ -5,12 +5,26 @@ import MenuProductComponent from "../components/product/MenuProductComponent";
 import ProductFilterComponent from "../components/product/ProductFilterComponent";
 import HeaderComponent from "../components/header/HeaderComponent";
 import FooterComponent from "../components/footer/FooterComponent"
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 function ProductList() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch({
+            type: "SET_BREADCRUMB",
+            payload: {
+                breadcrumb1: "products",
+                breadcrumb2: null,
+                breadcrumb3: null
+            }
+        })
+    }, [])
     return (
         <>
-            <HeaderComponent/>
-            <Container className = "mt-1">
+            <HeaderComponent />
+            <Container className="mt-1">
                 <BreadcrumbComponent className="mb-5" />
                 <Row>
                     <Col className="col-3">

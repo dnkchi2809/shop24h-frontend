@@ -62,7 +62,7 @@ function ProductDetail() {
         let newSelect = {
             product: productId,
             amount: amount,
-            info : productInfo
+            info: productInfo
         }
 
         let orderList = JSON.parse(localStorage.getItem("orderList")) || [];
@@ -70,35 +70,49 @@ function ProductDetail() {
         if (orderList.length >= 1) {
             const productExit = orderList.find(element => element.product == newSelect.product);
 
-            if(Boolean(productExit)){
+            if (Boolean(productExit)) {
                 productExit.amount += newSelect.amount
             }
-            else{
+            else {
                 orderList.push(newSelect);
             }
         }
-        else{
+        else {
             console.log("false")
             orderList.push(newSelect);
         }
 
         console.log(orderList);
 
-        localStorage.setItem("orderList",JSON.stringify(orderList))
+        localStorage.setItem("orderList", JSON.stringify(orderList))
     }
 
     useEffect(() => {
         fetch("https://shop24-backend.herokuapp.com/products/" + productId || "http://localhost:8000/products/" + productId)
             .then(response => response.json())
             .then(result => {
+
                 setProductInfo(result.data);
 
                 dispatch({
                     type: "SET_PRODUCT_TYPE",
                     payload: {
-                        productType: productId.type
+                        productType: result.data.type
                     }
                 })
+
+                fetch("https://shop24-backend.herokuapp.com/productTypes/" + result.data.type || "http://localhost:8000/productTypes/" + result.data.type)
+                    .then(response => response.json())
+                    .then(result => {
+                        dispatch({
+                            type: "SET_BREADCRUMB",
+                            payload: {
+                                breadcrumb1: "products",
+                                breadcrumb2: result.data.name,
+                                breadcrumb3: productInfo.name
+                            }
+                        })
+                     })
 
             })
             .catch(error => console.log('error', error));

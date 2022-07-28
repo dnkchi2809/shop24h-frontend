@@ -9,7 +9,10 @@ const initialState = {
     productType: "",
     openSnackbar: false,
     alertString: "",
-    alertSeverity: "error"
+    alertSeverity: "error",
+    breadcrumb1: null,
+    breadcrumb2: null,
+    breadcrumb3: null,
 }
 
 const appReducer = (state = initialState, action) => {
@@ -73,6 +76,14 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 alertSeverity: action.payload.alertSeverity
+            };
+            break;
+        case "SET_BREADCRUMB":
+            return {
+                ...state,
+                breadcrumb1: action.payload.breadcrumb1,
+                breadcrumb2: action.payload.breadcrumb2,
+                breadcrumb3: action.payload.breadcrumb3
             };
             break;
         default:
