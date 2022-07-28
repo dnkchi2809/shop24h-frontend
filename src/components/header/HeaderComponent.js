@@ -13,6 +13,7 @@ import LoginModal from "../modals/LoginModal";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom"
 import SigninModal from '../modals/SigninModal';
+import SnackbarAlert from '../snackbarAlert/SnackbarAlert';
 
 function HeaderComponent() {
     const dispatch = useDispatch();
@@ -106,14 +107,14 @@ function HeaderComponent() {
     });
 
     useEffect(() => {
-        auth.onAuthStateChanged((result) => {
+        /*auth.onAuthStateChanged((result) => {
             dispatch({
                 type: "SET_USER",
                 payload: {
                     user: result
                 }
             });
-        });
+        });*/
 
         fetch("https://shop24-backend.herokuapp.com/productTypes" || "http://localhost:8000/productTypes")
             .then(response => response.json())
@@ -172,7 +173,6 @@ function HeaderComponent() {
                                                 onClose={handleClose}
                                                 TransitionComponent={Fade}
                                             >
-                                                <MenuItem onClick={handleClose}>Profile</MenuItem>
                                                 <MenuItem onClick={handleClose}>My account</MenuItem>
                                                 <MenuItem onClick={onBtnLogoutClick}>Logout</MenuItem>
                                             </Menu>
@@ -250,6 +250,9 @@ function HeaderComponent() {
             {/* Modals */}
             <LoginModal />
             <SigninModal />
+
+            {/* Alert */}
+            <SnackbarAlert />
         </>
     )
 }

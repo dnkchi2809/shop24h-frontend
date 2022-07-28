@@ -9,8 +9,6 @@ function ProductDetail() {
 
     const dispatch = useDispatch();
 
-    const { selectedProduct } = useSelector((reduxData) => reduxData.reducers);
-
     const productId = param.productId;
 
     const [productInfo, setProductInfo] = useState(null);
@@ -86,12 +84,6 @@ function ProductDetail() {
 
         console.log(orderList);
 
-        /*dispatch({
-            type: "SELECT_PRODUCT",
-            payload: {
-                selectedProduct: selectedProduct
-            }
-        })*/
         localStorage.setItem("orderList",JSON.stringify(orderList))
     }
 

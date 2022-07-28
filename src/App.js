@@ -8,7 +8,6 @@ import ProductList from "./pages/ProductList";
 import ProductInfo from "./pages/ProductInfo";
 import Admin from "./pages/Admin";
 import OrderList from "./pages/OrderList";
-import { useEffect } from "react";
 
 function App() {
   return (

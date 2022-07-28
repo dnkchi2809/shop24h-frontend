@@ -2,12 +2,14 @@ const initialState = {
     user: null,
     openLoginModal: false,
     openSignInModal: false,
-    openOrderModal : false,
+    openOrderModal: false,
     productList: [],
     lowPrice: 0,
     highPrice: 999999999999,
     productType: "",
-    selectedProduct: []
+    openSnackbar: false,
+    alertString: "",
+    alertSeverity: "error"
 }
 
 const appReducer = (state = initialState, action) => {
@@ -60,10 +62,17 @@ const appReducer = (state = initialState, action) => {
                 productType: action.payload.productType
             };
             break;
-        case "SELECT_PRODUCT":
+        case "OPEN_SNACKBAR":
             return {
                 ...state,
-                selectedProduct: action.payload.selectedProduct
+                openSnackbar: action.payload.openSnackbar,
+                alertString: action.payload.alertString
+            };
+            break;
+        case "ALERT_SEVERITY":
+            return {
+                ...state,
+                alertSeverity: action.payload.alertSeverity
             };
             break;
         default:

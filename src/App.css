@@ -9,6 +9,7 @@ a.cart{
 }
 
 a.cart .cart-basket {
+  font-size: small;
   position: absolute;
   top: -10px;
   right: 35px;

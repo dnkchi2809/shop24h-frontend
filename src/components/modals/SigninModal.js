@@ -28,7 +28,7 @@ function SigninModal(props) {
         email: "",
         userName: "",
         password: "",
-        repeatPassword : ""
+        repeatPassword: ""
     }
 
     const onBtnSigninGoogleClick = () => {
@@ -37,9 +37,16 @@ function SigninModal(props) {
                 console.log(result);
 
                 dispatch({
-                    type: "SET_USER",
+                    type: "OPEN_SNACKBAR",
                     payload: {
-                        user: result
+                        openSnackbar: true,
+                        alertString: "Sign in with Google Account"
+                    }
+                })
+                dispatch({
+                    type: "ALERT_SEVERITY",
+                    payload: {
+                        alertSeverity: "success"
                     }
                 });
 
@@ -77,27 +84,34 @@ function SigninModal(props) {
     const onBtnSignInClick = () => {
         console.log(newUser);
         let validUser = validateUser(newUser);
-        if(validUser){
+        if (validUser) {
             let content = {
-                method : "POST",
+                method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body : JSON.stringify(newUser)
+                body: JSON.stringify(newUser)
             }
 
             fetch("https://shop24-backend.herokuapp.com/customers", content)
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                /*dispatch({
-                    type: "SET_USER",
-                    payload: {
-                        user: data.data
-                    }
-                });*/
-                localStorage.setItem("user", JSON.stringify(data.data))
-            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    dispatch({
+                        type: "OPEN_SNACKBAR",
+                        payload: {
+                            openSnackbar: true,
+                            alertString: "Sign in successfully"
+                        }
+                    })
+                    dispatch({
+                        type: "ALERT_SEVERITY",
+                        payload: {
+                            alertSeverity: "success"
+                        }
+                    });
+                    localStorage.setItem("user", JSON.stringify(data.data))
+                })
 
             handleModalClose()
         }
@@ -113,28 +127,64 @@ function SigninModal(props) {
     }
 
     const validateUser = (paramUser) => {
-        if(paramUser.fullName == ""){
-            alert("Fullname is invalid");
+        if (paramUser.fullName == "") {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Fullname is invalid"
+                }
+            })
             return false
         }
-        if(paramUser.phone == ""){
-            alert("Phone is invalid");
+        if (paramUser.phone == "") {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Phone is invalid"
+                }
+            })
             return false
         }
-        if(paramUser.email == ""){
-            alert("Email is invalid");
+        if (paramUser.email == "") {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Email is invalid"
+                }
+            })
             return false
         }
-        if(paramUser.userName == ""){
-            alert("Username is invalid");
+        if (paramUser.userName == "") {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Username is invalid"
+                }
+            })
             return false
         }
-        if(paramUser.password == ""){
-            alert("Password is invalid");
+        if (paramUser.password == "") {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Password is invalid"
+                }
+            })
             return false
         }
-        if(paramUser.repeatPassword !== paramUser.password){
-            alert("Password repeat is incorrect");
+        if (paramUser.repeatPassword !== paramUser.password) {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Repeat Password is invalid"
+                }
+            })
             return false
         }
         return true

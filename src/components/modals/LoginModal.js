@@ -30,19 +30,31 @@ function LoginModal(props) {
     const userInfo = {
         displayName: "",
         email: "",
-        phone: ""
+        phone: "",
+        address: "",
+        city: "",
+        country: "",
     }
 
     const onBtnLoginGoogleClick = () => {
         auth.signInWithPopup(googleProvider)
             .then((result) => {
                 //console.log(result);
-                /*dispatch({
-                    type: "SET_USER",
+
+                dispatch({
+                    type: "OPEN_SNACKBAR",
                     payload: {
-                        user: userInfo
+                        openSnackbar: true,
+                        alertString: "Log in with Google Account"
                     }
-                });*/
+                })
+                dispatch({
+                    type: "ALERT_SEVERITY",
+                    payload: {
+                        alertSeverity: "success"
+                    }
+                });
+
                 userInfo.displayName = result.user.displayName;
                 userInfo.email = result.user.email;
                 userInfo.phone = result.user.phoneNumber;
@@ -78,15 +90,28 @@ function LoginModal(props) {
                     //console.log(data);
                     if (data.data.length >= 1) {
                         if (data.data[0].password == userLogin.password) {
-                            /*dispatch({
-                                type: "SET_USER",
+                            //hiển thị alert
+                            dispatch({
+                                type: "OPEN_SNACKBAR",
                                 payload: {
-                                    user: userInfo
+                                    openSnackbar: true,
+                                    alertString: "Log in successfully"
                                 }
-                            });*/
+                            })
+                            dispatch({
+                                type: "ALERT_SEVERITY",
+                                payload: {
+                                    alertSeverity: "success"
+                                }
+                            });
+
+                            //luu user vao local storage
                             userInfo.displayName = data.data[0].fullName;
                             userInfo.email = data.data[0].email;
                             userInfo.phone = data.data[0].phone;
+                            userInfo.address = data.data[0].address;
+                            userInfo.city = data.data[0].city;
+                            userInfo.country = data.data[0].country;
 
                             let userArrayTemp = [];
                             userArrayTemp.push(userInfo)
@@ -109,12 +134,24 @@ function LoginModal(props) {
         console.log(paramUser);
 
         if (paramUser.username == "") {
-            alert("username is invalid");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Username is invalid"
+                }
+            })
             return false
         }
 
         if (paramUser.password == "") {
-            alert("password is invalid");
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Password is invalid"
+                }
+            })
             return false
         }
         return true
