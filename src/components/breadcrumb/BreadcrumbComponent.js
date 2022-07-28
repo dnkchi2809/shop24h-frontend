@@ -32,6 +32,7 @@ function BreadcrumbComponent() {
   const { breadcrumb1, breadcrumb2, breadcrumb3 } = useSelector((reduxData) => reduxData.reducers);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <div role="presentation">
@@ -40,21 +41,48 @@ function BreadcrumbComponent() {
         {
           breadcrumb1 !== null
             ?
-            <StyledBreadcrumb label={breadcrumb1} onClick={() => navigate("/" + breadcrumb1 )} />
+            <StyledBreadcrumb label={breadcrumb1} onClick={() => navigate("/" + breadcrumb1)} />
             :
             null
         }
         {
           breadcrumb2 !== null
             ?
-            <StyledBreadcrumb label={breadcrumb2} onClick={() => navigate("/" + breadcrumb2 )} />
+            <StyledBreadcrumb
+              label={breadcrumb2}
+              onClick={() => {
+                navigate("/" + breadcrumb1);
+                dispatch({
+                  type: "SET_BREADCRUMB",
+                  payload: {
+                    breadcrumb1: "products",
+                    breadcrumb2: null,
+                    breadcrumb3: null
+                  }
+                })
+              }}
+            />
             :
             null
         }
         {
           breadcrumb3 !== null
             ?
-            <StyledBreadcrumb label={breadcrumb3} onClick={() => navigate("/" + breadcrumb3 )} />
+            <StyledBreadcrumb
+              label={breadcrumb3}
+              onClick={() => {
+                navigate("/" + breadcrumb1);
+                dispatch({
+                  type: "SET_BREADCRUMB",
+                  payload: {
+                    breadcrumb1: breadcrumb1,
+                    breadcrumb2: null,
+                    breadcrumb3: null
+                  }
+                })
+              }
+              }
+            />
             :
             null
         }

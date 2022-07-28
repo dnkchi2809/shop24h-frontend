@@ -34,12 +34,22 @@ function MenuProductComponent() {
     }
 
     const onProductCLick = (event) => {
+        console.log(event)
         dispatch({
             type: "SET_PRODUCT_TYPE",
             payload: {
                 productType: event.target.id
             }
         });
+
+        dispatch({
+            type: "SET_BREADCRUMB",
+            payload: {
+                breadcrumb1: "products",
+                breadcrumb2: event.target.outerText,
+                breadcrumb3: null
+            }
+        })
 
         navigate("/products");
     }

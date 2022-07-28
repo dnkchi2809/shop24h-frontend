@@ -119,7 +119,13 @@ function OrderListComponents() {
             }
         }
         else {
-            alert("Chưa chọn item")
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Select the item"
+                }
+            })
         }
     }
 
@@ -179,8 +185,8 @@ function OrderListComponents() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell className="text-center text-primary"><b>{itemTotal}</b></TableCell>
-                        <TableCell className="text-center bg-info">
-                            <btn className="btn border-info text-white btn-sm bg-info btn-payment" onClick={onBtnPaymentClick}>Payment</btn>
+                        <TableCell className="text-center bg-primary">
+                            <btn className="btn border-primary text-white btn-sm bg-primary w-100 btn-payment" onClick={onBtnPaymentClick}>Payment</btn>
                         </TableCell>
                     </TableRow>
                 </TableBody>
