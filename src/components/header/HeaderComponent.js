@@ -49,8 +49,8 @@ function HeaderComponent() {
             .catch((error) => {
                 console.log(error);
             });
-            let userArrayTemp = [];
-            localStorage.setItem("userInfo", JSON.stringify(userArrayTemp));
+        let userArrayTemp = [];
+        localStorage.setItem("userInfo", JSON.stringify(userArrayTemp));
 
         handleClose();
     }
@@ -135,7 +135,7 @@ function HeaderComponent() {
                                 <ListInlineItem>
                                     <Button variant="text" sx={{ padding: "0%" }}>
                                         <a style={{ color: "white", textDecoration: "none" }} href='/'>
-                                            <i className="fa-solid fa-house"></i>
+                                            <i className="fa-solid fa-house"></i>&nbsp;
                                             Home
                                         </a>
                                     </Button>
@@ -143,11 +143,25 @@ function HeaderComponent() {
                                 <ListInlineItem>
                                     <Button variant="text">
                                         <a style={{ color: "white", textDecoration: "none" }} href='/products'>
-                                            <i className="fas fa-list"></i>
+                                            <i className="fas fa-list"></i>&nbsp;
                                             Products
                                         </a>
                                     </Button>
                                 </ListInlineItem>
+                                {
+                                    user.length >= 1 && user[0].displayName == "admin"
+                                        ?
+                                        <ListInlineItem>
+                                            <Button variant="text">
+                                                <a style={{ color: "white", textDecoration: "none" }} href='/admin'>
+                                                    <i class="fas fa-users-cog"></i>&nbsp;
+                                                    Admin
+                                                </a>
+                                            </Button>
+                                        </ListInlineItem>
+                                        :
+                                        null
+                                }
                             </List>
                         </Col>
                         <Col className="d-flex justify-content-end">

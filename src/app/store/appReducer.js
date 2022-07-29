@@ -13,6 +13,9 @@ const initialState = {
     breadcrumb1: null,
     breadcrumb2: null,
     breadcrumb3: null,
+    headerAdmin: "Shop Management",
+    breadcrumbAdmin1: null,
+    breadcrumbAdmin2: null
 }
 
 const appReducer = (state = initialState, action) => {
@@ -84,6 +87,19 @@ const appReducer = (state = initialState, action) => {
                 breadcrumb1: action.payload.breadcrumb1,
                 breadcrumb2: action.payload.breadcrumb2,
                 breadcrumb3: action.payload.breadcrumb3
+            };
+            break;
+        case "SET_HEADER_ADMIN":
+            return {
+                ...state,
+                headerAdmin: action.payload.headerAdmin,
+            };
+            break;
+        case "SET_BREADCRUMB_ADMIN":
+            return {
+                ...state,
+                breadcrumbAdmin1: action.payload.breadcrumbAdmin1,
+                breadcrumbAdmin2: action.payload.breadcrumbAdmin2
             };
             break;
         default:
