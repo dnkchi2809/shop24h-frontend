@@ -22,14 +22,14 @@ function SigninModal(props) {
 
     const { openSignInModal } = useSelector((reduxData) => reduxData.reducers);
 
-    const newUser = {
+    const [newUser] = useState({
         fullName: "",
         phone: "",
         email: "",
         userName: "",
         password: "",
         repeatPassword: ""
-    }
+    })
 
     const onBtnSigninGoogleClick = () => {
         auth.signInWithPopup(googleProvider)
@@ -59,6 +59,7 @@ function SigninModal(props) {
 
     const onFullnameInput = (event) => {
         newUser.fullName = event.target.value
+        console.log(newUser.fullName)
     }
 
     const onPhoneInput = (event) => {
