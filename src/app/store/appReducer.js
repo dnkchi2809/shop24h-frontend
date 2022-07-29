@@ -8,6 +8,7 @@ const initialState = {
     highPrice: 999999999999,
     productType: "",
     openSnackbar: false,
+    totalAmount: 0,
     alertString: "",
     alertSeverity: "error",
     breadcrumb1: null,
@@ -79,6 +80,12 @@ const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 alertSeverity: action.payload.alertSeverity
+            };
+            break;
+        case "SET_TOTAL_AMOUNT":
+            return {
+                ...state,
+                totalAmount: action.payload.totalAmount
             };
             break;
         case "SET_BREADCRUMB":

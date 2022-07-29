@@ -6,6 +6,8 @@ import OrderModal from "../modals/OrderModal";
 function OrderListComponents() {
     const dispatch = useDispatch();
 
+    const { alertString } = useSelector((reduxData) => reduxData.reducers);
+
     const [user, setUser] = useState([])
 
     const [orderList, setOrderList] = useState([]);
@@ -133,6 +135,10 @@ function OrderListComponents() {
     useEffect(() => {
         setUser(JSON.parse(localStorage.getItem("userInfo")) || []);
         setOrderList(JSON.parse(localStorage.getItem("orderList")) || [])
+        if(alertString == "Payment success"){
+            setItemTotal(0);
+            setSelectItem([]);
+        }
     })
 
     useEffect(() => {
