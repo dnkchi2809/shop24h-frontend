@@ -196,12 +196,15 @@ function SigninModal(props) {
             <Modal open={openSignInModal} onClose={handleModalClose}>
                 <Box style={style} className="modal-style">
                     <Container>
-                        <Row>
+                        <Row className="text-center">
+                            <h4>SIGN IN</h4>
+                        </Row>
+                        {/*<Row>
                             <Button color="danger" style={{ borderRadius: "25px" }} onClick={onBtnSigninGoogleClick}><i className="fab fa-google"></i> &nbsp; Sign in with <b>Google</b></Button>
                         </Row>
                         <Row className="text-center mt-4 mb-4">
                             <b>or</b>
-                        </Row>
+    </Row>*/}
                         <Row className="mt-3">
                             <Input style={{ borderRadius: "25px" }} placeholder="Fullname" onInput={onFullnameInput}></Input>
                         </Row>
@@ -209,7 +212,7 @@ function SigninModal(props) {
                             <Input style={{ borderRadius: "25px" }} placeholder="Phone" onInput={onPhoneInput}></Input>
                         </Row>
                         <Row className="mt-3">
-                            <Input style={{ borderRadius: "25px" }} placeholder="Email" onInput={onEmailInput}></Input>
+                            <Input type="email" style={{ borderRadius: "25px" }} placeholder="Email" onInput={onEmailInput}></Input>
                         </Row>
                         <Row className="mt-3">
                             <Input style={{ borderRadius: "25px" }} placeholder="Username" onInput={onUsernameInput}></Input>

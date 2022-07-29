@@ -118,11 +118,23 @@ function LoginModal(props) {
                             localStorage.setItem("userInfo", JSON.stringify(userArrayTemp));
                         }
                         else {
-                            alert("Wrong password");
+                            dispatch({
+                                type: "OPEN_SNACKBAR",
+                                payload: {
+                                    openSnackbar: true,
+                                    alertString: "Wrong password"
+                                }
+                            })
                         }
                     }
                     else {
-                        alert("Username is not exit");
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Username is not exit"
+                            }
+                        })
                     }
                 })
 

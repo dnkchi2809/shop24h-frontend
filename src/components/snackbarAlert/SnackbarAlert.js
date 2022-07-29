@@ -30,7 +30,7 @@ function SnackbarAlert() {
             <Snackbar 
             anchorOrigin={{ vertical: "top", horizontal: "center" }} 
             open={openSnackbar} 
-            autoHideDuration={2000} 
+            autoHideDuration={5000} 
             onClose={handleSnackBarClose}>
                 <Alert severity={alertSeverity} sx={{ width: '100%' }}>
                     {alertString}
