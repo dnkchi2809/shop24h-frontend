@@ -1,0 +1,7 @@
+.pointer:hover{
+    cursor: pointer;
+}
+.modal-dialog {
+    max-width: 75%;
+    /* New width for default modal */
+}

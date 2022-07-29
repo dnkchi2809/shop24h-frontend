@@ -22,7 +22,7 @@ function LoginModal(props) {
 
     const { openLoginModal } = useSelector((reduxData) => reduxData.reducers);
 
-    const [ userLogin, setUserLogin ] = useState({
+    const [userLogin, setUserLogin] = useState({
         username: "",
         password: ""
     })
@@ -195,6 +195,9 @@ function LoginModal(props) {
                         </Row>
                         <Row className="mt-3">
                             <Button color="dark" style={{ borderRadius: "25px" }} onClick={onBtnLoginClick}>Log in</Button>
+                        </Row>
+                        <Row className="mt-3">
+                            <a href="#" style={{ textDecoration: "none" }} className="text-center"><i>Forget Password?</i></a>
                         </Row>
                         <Row className="mt-3">
                             <Button color="btn border-danger bg-white text-danger" style={{ borderRadius: "25px" }} onClick={onBtnHaventAcountClick}>Haven't an account?</Button>
