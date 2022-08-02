@@ -69,7 +69,7 @@ function ProductTable() {
                 setPageAmount(Math.ceil(productData.length / limit));
                 setRows(productData.slice((pageIndex - 1) * limit, pageIndex * limit));
             })
-            .catch(error => console.log('error', error));
+            //.catch(error => console.log('error', error));
     })
 
     return (

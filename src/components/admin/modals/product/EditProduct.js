@@ -74,7 +74,7 @@ function EditProduct(props) {
             fetch("https://shop24-backend.herokuapp.com/products/" + props.product._id, content)
                 .then((response) => response.json())
                 .then((data) => {
-
+                    console.log(data.status);
                     if (data.status == "Success 200") {
                         dispatch({
                             type: "OPEN_SNACKBAR",
@@ -204,7 +204,7 @@ function EditProduct(props) {
             editProduct.promotionPrice = props.product.promotionPrice;
             editProduct.type = props.product.type
         }
-    })
+    }, [props.product])
 
     return (
         <>
