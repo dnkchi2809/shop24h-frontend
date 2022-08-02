@@ -12,7 +12,7 @@ function CustomerTable() {
 
     const [customerData, setCustomerData] = useState([]);
 
-    const limit = 5;
+    const limit = 10;
 
     const [pageIndex, setPageIndex] = useState(1);
 
@@ -134,7 +134,7 @@ function CustomerTable() {
                 </TableBody>
             </TableContainer>
             {/* Pagination */}
-            <Grid className="mb-5 d-flex justify-content-end">
+            <Grid className="d-flex justify-content-end">
                 <Pagination count={pageAmount} defaultPage={pageIndex} onChange={onPageIndexChange} />
             </Grid>
 

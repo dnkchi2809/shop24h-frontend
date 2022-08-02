@@ -21,6 +21,18 @@ const initialState = {
     openCreateUserModal: false,
     openEditUserModal: false,
     openDeleteUserModal: false,
+
+    openCreateOrderModal: false,
+    openEditOrderModal: false,
+    openDeleteOrderModal: false,
+
+    openCreateProductModal: false,
+    openEditProductModal: false,
+    openDeleteProductModal: false,
+
+    openCreateProductTypeModal: false,
+    openEditProductTypeModal: false,
+    openDeleteProductTypeModal: false,
 }
 
 const appReducer = (state = initialState, action) => {
@@ -128,7 +140,61 @@ const appReducer = (state = initialState, action) => {
         case "DELETE_USER_MODAL":
             return {
                 ...state,
-                openDeleteUserModal: action.payload.openDeleteUserModal
+                openDeleteUserModal: action.payload.openDeleteOrderModal
+            };
+            break;
+        case "CREATE_ORDER_MODAL":
+            return {
+                ...state,
+                openCreateOrderModal: action.payload.openCreateOrderModal
+            };
+            break;
+        case "EDIT_ORDER_MODAL":
+            return {
+                ...state,
+                openEditOrderModal: action.payload.openEditOrderModal
+            };
+            break;
+        case "DELETE_ORDER_MODAL":
+            return {
+                ...state,
+                openDeleteOrderModal: action.payload.openDeleteOrderModal
+            };
+            break;
+        case "CREATE_PRODUCT_MODAL":
+            return {
+                ...state,
+                openCreateProductModal: action.payload.openCreateProductModal
+            };
+            break;
+        case "EDIT_PRODUCT_MODAL":
+            return {
+                ...state,
+                openEditProductModal: action.payload.openEditProductModal
+            };
+            break;
+        case "DELETE_PRODUCT_MODAL":
+            return {
+                ...state,
+                openDeleteProductModal: action.payload.openDeleteProductModal
+            };
+            break;
+        case "CREATE_PRODUCTTYPE_MODAL":
+            return {
+                ...state,
+                openCreateProductTypeModal: action.payload.openCreateProductTypeModal
+            };
+            break;
+        case "EDIT_PRODUCTTYPE_MODAL":
+            return {
+                ...state,
+                openEditProductTypeModal: action.payload.openEditProductTypeModal
+            };
+            break;
+        case "DELETE_PRODUCTTYPE_MODAL":
+            return {
+                ...state,
+                openDeleteProductTypeModal: action.payload.openDeleteProductTypeModal
             };
             break;
         default:

@@ -1,16 +1,38 @@
 import { TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { Button, Col, Container, Row, Input } from "reactstrap";
+import { Grid } from "@mui/material";
+import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from "react"
 
 function ProductTypeTable() {
 
     const [productTypeData, setProductTypeData] = useState([]);
 
+    const limit = 10;
+
+    const [pageIndex, setPageIndex] = useState(1);
+
+    const [pageAmount, setPageAmount] = useState(0);
+
+    const [rows, setRows] = useState(null);
+
+    const [rowSelected, setRowSelected] = useState(null);
+
+    const onPageIndexChange = (event, value) => {
+        setPageIndex(value);
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
     useEffect(() => {
         fetch("https://shop24-backend.herokuapp.com/productTypes")
             .then((response) => response.json())
             .then((result) => {
-                setProductTypeData(result.data)
+                setProductTypeData(result.data);
+                setPageAmount(Math.ceil(productTypeData.length / limit));
+                setRows(productTypeData.slice((pageIndex - 1) * limit, pageIndex * limit));
             })
             .catch(error => console.log('error', error));
     })
@@ -28,9 +50,9 @@ function ProductTypeTable() {
                 </TableHead>
                 <TableBody>
                     {
-                        productTypeData.length >= 1
+                        rows !== null
                             ?
-                            productTypeData.map((element, index) => {
+                            rows.map((element, index) => {
                                 return (
                                     <>
                                         <TableRow>
@@ -55,6 +77,11 @@ function ProductTypeTable() {
                     }
                 </TableBody>
             </TableContainer>
+
+            {/* Pagination */}
+            <Grid className="d-flex justify-content-end">
+                <Pagination count={pageAmount} defaultPage={pageIndex} onChange={onPageIndexChange} />
+            </Grid>
         </>
     )
 }
