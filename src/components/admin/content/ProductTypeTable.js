@@ -3,8 +3,13 @@ import { Button, Col, Container, Row, Input } from "reactstrap";
 import { Grid } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux";
+import CreateProductType from "../modals/productType/CreateProductType";
+import EditProductType from "../modals/productType/EditProductType";
+import DeleteProductType from "../modals/productType/DeleteProductType";
 
 function ProductTypeTable() {
+    const dispatch = useDispatch();
 
     const [productTypeData, setProductTypeData] = useState([]);
 
@@ -26,6 +31,35 @@ function ProductTypeTable() {
         });
     }
 
+    const onAddProductType = () => {
+        dispatch({
+            type: "CREATE_PRODUCTTYPE_MODAL",
+            payload: {
+                openCreateProductTypeModal: true,
+            }
+        })
+    }
+
+    const openEditProductTypeModal = (param) => {
+        setRowSelected(param)
+        dispatch({
+            type: "EDIT_PRODUCTTYPE_MODAL",
+            payload: {
+                openEditProductTypeModal: true,
+            }
+        })
+    }
+
+    const onDeleteProductTypeClick = (param) => {
+        setRowSelected(param)
+        dispatch({
+            type: "DELETE_PRODUCTTYPE_MODAL",
+            payload: {
+                openDeleteProductTypeModal: true,
+            }
+        })
+    }
+
     useEffect(() => {
         fetch("https://shop24-backend.herokuapp.com/productTypes")
             .then((response) => response.json())
@@ -42,7 +76,7 @@ function ProductTypeTable() {
             <TableContainer className="w-100 bg-white">
                 <TableHead>
                     <TableRow>
-                        <TableCell className="text-center p-0" style={{ width: "5%" }}><i className="fas fa-plus-square fa-2x text-primary" data-toggle="tooltip" title="Add Product"></i></TableCell>
+                        <TableCell className="text-center p-0" style={{ width: "5%" }}><i className="fas fa-plus-square fa-2x text-primary" data-toggle="tooltip" title="Add Product Type" onClick={onAddProductType}></i></TableCell>
                         <TableCell className="text-center" style={{ width: "40%" }}><b>Product Type ID</b></TableCell>
                         <TableCell className="text-center" style={{ width: "15%" }}><b>Name</b></TableCell>
                         <TableCell className="text-center"><b>Action</b></TableCell>
@@ -66,7 +100,8 @@ function ProductTypeTable() {
                                                 <Input className="border-0 p-0" style={{textAlign:"center"}} defaultValue={element.name}></Input>
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <i className="fa-solid fa-trash-can" data-toggle="tooltip" title="Delete Product"></i>
+                                            <i className="fas fa-edit" data-toggle="tooltip" title="Edit Product" onClick={() => { openEditProductTypeModal(element) }}></i>&nbsp;&nbsp;
+                                                <i className="fa-solid fa-trash-can" data-toggle="tooltip" title="Delete Product" onClick={() => { onDeleteProductTypeClick(element) }}></i>
                                             </TableCell>
                                         </TableRow>
                                     </>
@@ -82,6 +117,10 @@ function ProductTypeTable() {
             <Grid className="d-flex justify-content-end">
                 <Pagination count={pageAmount} defaultPage={pageIndex} onChange={onPageIndexChange} />
             </Grid>
+
+            <CreateProductType />
+            <EditProductType productType={rowSelected} />
+            <DeleteProductType productType={rowSelected}/>
         </>
     )
 }
