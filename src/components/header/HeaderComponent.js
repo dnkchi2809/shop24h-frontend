@@ -13,7 +13,6 @@ import LoginModal from "../modals/LoginModal";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom"
 import SigninModal from '../modals/SigninModal';
-import SnackbarAlert from '../snackbarAlert/SnackbarAlert';
 
 function HeaderComponent() {
     const dispatch = useDispatch();
@@ -265,8 +264,6 @@ function HeaderComponent() {
             <LoginModal />
             <SigninModal />
 
-            {/* Alert */}
-            <SnackbarAlert />
         </>
     )
 }

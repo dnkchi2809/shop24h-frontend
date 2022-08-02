@@ -51,7 +51,7 @@ function OrderTable() {
                                                 {element.orderDetail[0].email}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <i class="fas fa-list-ul" data-toggle="tooltip" title="Order Item"></i>
+                                                <i className="fas fa-list-ul" data-toggle="tooltip" title="Order Item"></i>
                                             </TableCell>
                                             <TableCell className="text-center">
                                                 {element.cost}

@@ -10,7 +10,6 @@ function ProductTable() {
         fetch("https://shop24-backend.herokuapp.com/products")
             .then((response) => response.json())
             .then((result) => {
-                console.log(result.data);
                 setProductData(result.data)
             })
             .catch(error => console.log('error', error));
@@ -57,7 +56,7 @@ function ProductTable() {
                                                 <Input className="border-0 p-0" style={{textAlign:"center"}} defaultValue={element.amount}></Input>
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <i class="fa-solid fa-trash-can" data-toggle="tooltip" title="Delete Product"></i>
+                                                <i className="fa-solid fa-trash-can" data-toggle="tooltip" title="Delete Product"></i>
                                             </TableCell>
                                         </TableRow>
                                     </>

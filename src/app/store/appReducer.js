@@ -16,7 +16,11 @@ const initialState = {
     breadcrumb3: null,
     headerAdmin: "Shop Management",
     breadcrumbAdmin1: null,
-    breadcrumbAdmin2: null
+    breadcrumbAdmin2: null,
+
+    openCreateUserModal: false,
+    openEditUserModal: false,
+    openDeleteUserModal: false,
 }
 
 const appReducer = (state = initialState, action) => {
@@ -107,6 +111,24 @@ const appReducer = (state = initialState, action) => {
                 ...state,
                 breadcrumbAdmin1: action.payload.breadcrumbAdmin1,
                 breadcrumbAdmin2: action.payload.breadcrumbAdmin2
+            };
+            break;
+        case "CREATE_USER_MODAL":
+            return {
+                ...state,
+                openCreateUserModal: action.payload.openCreateUserModal
+            };
+            break;
+        case "EDIT_USER_MODAL":
+            return {
+                ...state,
+                openEditUserModal: action.payload.openEditUserModal
+            };
+            break;
+        case "DELETE_USER_MODAL":
+            return {
+                ...state,
+                openDeleteUserModal: action.payload.openDeleteUserModal
             };
             break;
         default:

@@ -63,15 +63,55 @@ function SigninModal(props) {
     }
 
     const onPhoneInput = (event) => {
-        newUser.phone = event.target.value
+        newUser.phone = event.target.value;
+        fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newUser.phone)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.data.length >= 1) {
+                    dispatch({
+                        type: "OPEN_SNACKBAR",
+                        payload: {
+                            openSnackbar: true,
+                            alertString: "Phone already exists"
+                        }
+                    })
+                }
+            })
     }
 
     const onEmailInput = (event) => {
         newUser.email = event.target.value
+        fetch("https://shop24-backend.herokuapp.com/customers?email=" + newUser.email)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.data.length >= 1) {
+                    dispatch({
+                        type: "OPEN_SNACKBAR",
+                        payload: {
+                            openSnackbar: true,
+                            alertString: "Email already exists"
+                        }
+                    })
+                }
+            })
     }
 
     const onUsernameInput = (event) => {
-        newUser.userName = event.target.value
+        newUser.userName = event.target.value;
+        fetch("https://shop24-backend.herokuapp.com/customers?userName=" + newUser.userName)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.data.length >= 1) {
+                    dispatch({
+                        type: "OPEN_SNACKBAR",
+                        payload: {
+                            openSnackbar: true,
+                            alertString: "Username already exists"
+                        }
+                    })
+                }
+            })
+
     }
 
     const onPasswordInput = (event) => {
@@ -98,20 +138,32 @@ function SigninModal(props) {
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
-                    dispatch({
-                        type: "OPEN_SNACKBAR",
-                        payload: {
-                            openSnackbar: true,
-                            alertString: "Sign in successfully"
-                        }
-                    })
-                    dispatch({
-                        type: "ALERT_SEVERITY",
-                        payload: {
-                            alertSeverity: "success"
-                        }
-                    });
-                    localStorage.setItem("user", JSON.stringify(data.data))
+                    if (data.status == "Success 201") {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Sign in successfully"
+                            }
+                        })
+                        dispatch({
+                            type: "ALERT_SEVERITY",
+                            payload: {
+                                alertSeverity: "success"
+                            }
+                        });
+                        localStorage.setItem("user", JSON.stringify(data.data))
+                    }
+                    else {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Error! Please try again"
+                            }
+                        })
+                    }
+
                 })
 
             handleModalClose()

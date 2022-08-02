@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 
 function OrderModal(props) {
-    console.log(props);
     const style = {
         position: 'absolute',
         top: '50%',

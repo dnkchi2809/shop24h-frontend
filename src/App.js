@@ -7,6 +7,7 @@ import ProductList from "./pages/ProductList";
 import ProductInfo from "./pages/ProductInfo";
 import Admin from "./pages/Admin";
 import OrderList from "./pages/OrderList";
+import SnackbarAlert from "./components/snackbarAlert/SnackbarAlert"
 import "./dist/css/adminlte.min.css";
 import "./dist/js/adminlte.js"
 
@@ -21,6 +22,8 @@ function App() {
         <Route exact path="*" element={<Home />}></Route>
         <Route exact path="/admin" element={<Admin />}></Route>
       </Routes>
+      {/* Alert */}
+      <SnackbarAlert />
     </>
 
   );
