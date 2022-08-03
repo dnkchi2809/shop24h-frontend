@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CreateOrder from "../modals/order/CreateOrder";
 import DeleteOrder from "../modals/order/DeleteOrder";
+import EditOrder from "../modals/order/EditOrder";
 
 function OrderTable() {
     const dispatch = useDispatch();
@@ -136,7 +137,7 @@ function OrderTable() {
             </Grid>
 
             <CreateOrder />
-
+            <EditOrder order={rowSelected}/>
             <DeleteOrder order={rowSelected}/>
         </>
     )

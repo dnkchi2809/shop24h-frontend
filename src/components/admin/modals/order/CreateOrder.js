@@ -273,7 +273,7 @@ function CreateOrder() {
                     }
                 })
         }
-    
+
     }
 
     const validateOrder = (paramOrder) => {
@@ -402,28 +402,10 @@ function CreateOrder() {
                         </Row>
                         <Row className="mt-3">
                             <Col>
-                                <Row className="mt-3">
+                                <Row>
                                     <Col className="col-4">Fullname:</Col>
                                     <Col>
                                         <Input onInput={onInputNameChange} />
-                                    </Col>
-                                </Row>
-                            </Col>
-                            <Col>
-                                <Row className="mt-3">
-                                    <Col className="col-4">Phone:</Col>
-                                    <Col>
-                                        <Input onInput={onInputPhoneChange} />
-                                    </Col>
-                                </Row>
-                            </Col>
-                        </Row>
-                        <Row className="mt-3">
-                            <Col>
-                                <Row>
-                                    <Col className="col-4">Email:</Col>
-                                    <Col>
-                                        <Input type="email" onInput={onInputEmailChange} />
                                     </Col>
                                 </Row>
                             </Col>
@@ -439,9 +421,27 @@ function CreateOrder() {
                         <Row className="mt-3">
                             <Col>
                                 <Row>
+                                    <Col className="col-4">Phone:</Col>
+                                    <Col>
+                                        <Input onInput={onInputPhoneChange} />
+                                    </Col>
+                                </Row>
+                            </Col>
+                            <Col>
+                                <Row>
                                     <Col className="col-4">City:</Col>
                                     <Col>
                                         <Input onInput={onInputCityChange} />
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col>
+                                <Row>
+                                    <Col className="col-4">Email:</Col>
+                                    <Col>
+                                        <Input type="email" onInput={onInputEmailChange} />
                                     </Col>
                                 </Row>
                             </Col>
