@@ -73,13 +73,14 @@ function ProductTypeTable() {
 
     return (
         <>
-            <TableContainer className="w-100 bg-white">
+            <TableContainer className="w-100">
                 <TableHead>
                     <TableRow>
                         <TableCell className="text-center p-0" style={{ width: "5%" }}><i className="fas fa-plus-square fa-2x text-primary" data-toggle="tooltip" title="Add Product Type" onClick={onAddProductType}></i></TableCell>
-                        <TableCell className="text-center" style={{ width: "40%" }}><b>Product Type ID</b></TableCell>
-                        <TableCell className="text-center" style={{ width: "15%" }}><b>Name</b></TableCell>
-                        <TableCell className="text-center"><b>Action</b></TableCell>
+                        <TableCell className="text-center" style={{ width: "30%" }}><b>Product Type ID</b></TableCell>
+                        <TableCell className="text-center" style={{ width: "25%" }}><b>Name</b></TableCell>
+                        <TableCell className="text-center" style={{ width: "35%" }}><b>Description</b></TableCell>
+                        <TableCell className="text-center" style={{ width: "10%" }}><b>Action</b></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -94,10 +95,13 @@ function ProductTypeTable() {
                                                 {index + 1}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                {element._id}>
+                                                {element._id}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <Input className="border-0 p-0" style={{textAlign:"center"}} defaultValue={element.name}></Input>
+                                                {element.name}
+                                            </TableCell>
+                                            <TableCell className="text-center">
+                                                {element.description}
                                             </TableCell>
                                             <TableCell className="text-center">
                                             <i className="fas fa-edit" data-toggle="tooltip" title="Edit Product" onClick={() => { openEditProductTypeModal(element) }}></i>&nbsp;&nbsp;

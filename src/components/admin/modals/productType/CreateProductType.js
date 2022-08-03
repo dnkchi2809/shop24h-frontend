@@ -22,7 +22,8 @@ function CreateProductType() {
     const { openCreateProductTypeModal } = useSelector((reduxData) => reduxData.reducers);
 
     const [newProductType, setNewProductType] = useState({
-        name: ""
+        name: "",
+        description : ""
     })
 
     const onNameInputChange = (event) => {
@@ -42,6 +43,10 @@ function CreateProductType() {
                 })
             })
         newProductType.name = event.target.value
+    }
+
+    const onDescriptionInputChange = (event) => {
+        newProductType.description = event.target.value
     }
 
     const onConfirmCreateProductTypeClick = () => {
@@ -125,6 +130,12 @@ function CreateProductType() {
                             <Col className="col-3">Product Type:</Col>
                             <Col>
                                 <Input onInput={onNameInputChange} />
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col className="col-3">Description:</Col>
+                            <Col>
+                                <Input onInput={onDescriptionInputChange} />
                             </Col>
                         </Row>
                         <Row className="mt-4 text-center bg-danger">

@@ -22,7 +22,8 @@ function EditProductType(props) {
     const { openEditProductTypeModal } = useSelector((reduxData) => reduxData.reducers);
 
     const [newProductType, setNewProductType] = useState({
-        name: ""
+        name: "",
+        description : ""
     })
 
     const onNameInputChange = (event) => {
@@ -42,6 +43,10 @@ function EditProductType(props) {
                 })
             })
         newProductType.name = event.target.value
+    }
+
+    const onDescriptionInputChange = (event) => {
+        newProductType.description = event.target.value
     }
 
     const onConfirmEditProductTypeClick = () => {
@@ -126,7 +131,6 @@ function EditProductType(props) {
                         <Row className="mt-2 text-center">
                             <Typography><b>Create Product</b></Typography>
                         </Row>
-
                         <Row className="mt-3">
                             <Col className="col-3">Product Type:</Col>
                             <Col>
@@ -137,7 +141,18 @@ function EditProductType(props) {
                                         :
                                         null
                                 }
-
+                            </Col>
+                        </Row>
+                        <Row className="mt-3">
+                            <Col className="col-3">Product Type:</Col>
+                            <Col>
+                                {
+                                    props.productType !== null
+                                        ?
+                                        <Input defaultValue={props.productType.description} onInput={onDescriptionInputChange} />
+                                        :
+                                        null
+                                }
                             </Col>
                         </Row>
                         <Row className="mt-4 text-center bg-danger">

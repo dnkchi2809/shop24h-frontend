@@ -98,19 +98,19 @@ function ProductTable() {
                                                 {index + 1}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <Input className="border-0 p-0" defaultValue={element.name}></Input>
+                                                {element.name}
                                             </TableCell>
                                             <TableCell className="text-center">
                                                 <img src={element.imageUrl} style={{width:"40%"}}/>
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <Input className="border-0 p-0" style={{textAlign:"center"}} defaultValue={element.buyPrice}></Input>
+                                                {element.buyPrice}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <Input className="border-0 p-0" style={{textAlign:"center"}} defaultValue={element.promotionPrice}></Input>
+                                                {element.promotionPrice}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <Input className="border-0 p-0" style={{textAlign:"center"}} defaultValue={element.amount}></Input>
+                                                {element.amount}
                                             </TableCell>
                                             <TableCell className="text-center">
                                             <i className="fas fa-edit" data-toggle="tooltip" title="Edit Product" onClick={() => { openEditProductModal(element) }}></i>&nbsp;&nbsp;
