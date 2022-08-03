@@ -34,6 +34,7 @@ function OrderModal(props) {
     const [newOrder, setNewOrder] = useState({
         note: "",
         orderDetail: customerInfo,
+        shippedDate: "",
         cost: props.total
     })
 

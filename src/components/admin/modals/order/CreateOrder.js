@@ -42,6 +42,7 @@ function CreateOrder() {
     const [newOrder, setNewOrder] = useState({
         cost: total,
         note: "",
+        shippedDate: "",
         orderDetail: [newOrderDetail]
     })
 

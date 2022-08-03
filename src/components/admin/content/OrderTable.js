@@ -59,6 +59,182 @@ function OrderTable() {
         })
     }
 
+    const onSelectRow = (param) => {
+        setRowSelected(param);
+        console.log(rowSelected);
+    }
+
+    const onSelectStatus = (event) => {
+        if (event.target.value == "Canceled") {
+            let editBody = {
+                shippedDate: 0
+            }
+            let content = {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(editBody)
+            }
+
+            fetch("https://shop24-backend.herokuapp.com/orders/" + rowSelected._id, content)
+                .then((response) => response.json())
+                .then((data) => {
+
+                    if (data.status == "Success 200") {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Edit order succesfully"
+                            }
+                        })
+                        dispatch({
+                            type: "ALERT_SEVERITY",
+                            payload: {
+                                alertSeverity: "success"
+                            }
+                        });
+                    }
+                    else {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Error! Please try again"
+                            }
+                        })
+                    }
+                })
+        }
+        if (event.target.value == "Shipped") {
+            let editBody = {
+                shippedDate: Date()
+            }
+            let content = {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(editBody)
+            }
+
+            fetch("https://shop24-backend.herokuapp.com/orders/" + rowSelected._id, content)
+                .then((response) => response.json())
+                .then((data) => {
+
+                    if (data.status == "Success 200") {
+                        rowSelected.orderDetail[0].orderItems.map((element) => {
+                            let editAmount = {
+                                amount: element.info.amount - element.amount
+                            }
+                            console.log(editAmount)
+                            let content1 = {
+                                method: "PUT",
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(editAmount)
+                            }
+                            fetch("https://shop24-backend.herokuapp.com/products/" + element.product, content1)
+                            .then((response) => response.json())
+                            .then((result) => {
+                                if (data.status == "Success 200"){
+                                    dispatch({
+                                        type: "OPEN_SNACKBAR",
+                                        payload: {
+                                            openSnackbar: true,
+                                            alertString: "Update product amount succesfully"
+                                        }
+                                    })
+                                    dispatch({
+                                        type: "ALERT_SEVERITY",
+                                        payload: {
+                                            alertSeverity: "success"
+                                        }
+                                    });
+                                }
+                                else{
+                                    dispatch({
+                                        type: "OPEN_SNACKBAR",
+                                        payload: {
+                                            openSnackbar: true,
+                                            alertString: "Error! Please try again"
+                                        }
+                                    })
+                                }
+                            })
+                        })
+
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Edit order succesfully"
+                            }
+                        })
+                        dispatch({
+                            type: "ALERT_SEVERITY",
+                            payload: {
+                                alertSeverity: "success"
+                            }
+                        });
+                    }
+                    else {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Error! Please try again"
+                            }
+                        })
+                    }
+                })
+        }
+        if (event.target.value == "Ordering") {
+            let editBody = {
+                shippedDate: ""
+            }
+            let content = {
+                method: "PUT",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(editBody)
+            }
+
+            fetch("https://shop24-backend.herokuapp.com/orders/" + rowSelected._id, content)
+                .then((response) => response.json())
+                .then((data) => {
+
+                    if (data.status == "Success 200") {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Edit order succesfully"
+                            }
+                        })
+                        dispatch({
+                            type: "ALERT_SEVERITY",
+                            payload: {
+                                alertSeverity: "success"
+                            }
+                        });
+                    }
+                    else {
+                        dispatch({
+                            type: "OPEN_SNACKBAR",
+                            payload: {
+                                openSnackbar: true,
+                                alertString: "Error! Please try again"
+                            }
+                        })
+                    }
+                })
+        }
+    }
+
     useEffect(() => {
         fetch("https://shop24-backend.herokuapp.com/orders")
             .then((response) => response.json())
@@ -112,10 +288,28 @@ function OrderTable() {
                                                 {element.orderDate}
                                             </TableCell>
                                             <TableCell className="text-center">
-                                                <select className="form-control">
-                                                    <option key="1">Ordering</option>
-                                                    <option key="2">Shipped</option>
-                                                    <option key="3">Canceled</option>
+                                                <select className="form-control" onClick={() => onSelectRow(element)} onChange={onSelectStatus}>
+                                                    {
+                                                        element.shippedDate !== null
+                                                            ?
+                                                            element.shippedDate !== "1970-01-01T00:00:00.000Z"
+                                                                ?
+                                                                <>
+                                                                    <option key="2" selected>Shipped</option>
+                                                                </>
+                                                                :
+                                                                <>
+                                                                    <option key="3" selected>Canceled</option>
+                                                                </>
+                                                            :
+                                                            <>
+                                                                <option key="1" selected>Ordering</option>
+                                                                <option key="2">Shipped</option>
+                                                                <option key="3">Canceled</option>
+                                                            </>
+
+                                                    }
+
                                                 </select>
                                             </TableCell>
                                             <TableCell className="text-center">
@@ -137,8 +331,8 @@ function OrderTable() {
             </Grid>
 
             <CreateOrder />
-            <EditOrder order={rowSelected}/>
-            <DeleteOrder order={rowSelected}/>
+            <EditOrder order={rowSelected} />
+            <DeleteOrder order={rowSelected} />
         </>
     )
 }
