@@ -153,14 +153,14 @@ function OrderModal(props) {
                                 let newUserOrder = []
                                 newUserOrder.push(orderId)
                                 let body = {
-                                    userName: newOrder.orderDetail.email,
+                                    userName: customerInfo.email,
                                     password: "12345678",
-                                    fullName: newOrder.orderDetail.name,
-                                    phone: newOrder.orderDetail.phone,
-                                    email: newOrder.orderDetail.email,
-                                    address: newOrder.orderDetail.address,
-                                    city: newOrder.orderDetail.city,
-                                    country: newOrder.orderDetail.country,
+                                    fullName: customerInfo.name,
+                                    phone: customerInfo.phone,
+                                    email: customerInfo.email,
+                                    address: customerInfo.address,
+                                    city: customerInfo.city,
+                                    country: customerInfo.country,
                                     orders: newUserOrder
                                 }
                                 //tạo content update customer

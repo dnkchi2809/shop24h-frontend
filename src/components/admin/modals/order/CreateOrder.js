@@ -121,36 +121,10 @@ function CreateOrder() {
 
     const onInputPhoneChange = (event) => {
         newOrderDetail.phone = event.target.value
-        fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrderDetail.phone)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.data.length >= 1) {
-                    dispatch({
-                        type: "OPEN_SNACKBAR",
-                        payload: {
-                            openSnackbar: true,
-                            alertString: "Phone already exists"
-                        }
-                    })
-                }
-            })
     }
 
     const onInputEmailChange = (event) => {
         newOrderDetail.email = event.target.value
-        fetch("https://shop24-backend.herokuapp.com/customers?email=" + newOrderDetail.email)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.data.length >= 1) {
-                    dispatch({
-                        type: "OPEN_SNACKBAR",
-                        payload: {
-                            openSnackbar: true,
-                            alertString: "Email already exists"
-                        }
-                    })
-                }
-            })
     }
 
     const onInputAddressChange = (event) => {
@@ -165,29 +139,11 @@ function CreateOrder() {
         newOrderDetail.country = event.target.value
     }
 
-    const onInputOrderNameChange = (event) => {
-        newOrderDetail.userName = event.target.value;
-        fetch("https://shop24-backend.herokuapp.com/customers?userName=" + newOrderDetail.userName)
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.data.length >= 1) {
-                    dispatch({
-                        type: "OPEN_SNACKBAR",
-                        payload: {
-                            openSnackbar: true,
-                            alertString: "Ordername already exists"
-                        }
-                    })
-                }
-            })
-
-    }
 
     const onConfirmCreateOrderClick = () => {
         let validOrder = validateOrder(newOrderDetail);
 
         if (validOrder) {
-            debugger;
             console.log(newOrder);
 
             fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrder.orderDetail.phone)
@@ -199,7 +155,7 @@ function CreateOrder() {
                     if (data.data.length >= 1) {
                         console.log("số điện thoại đã có");
                         //lấy userId
-                        let userId = data.data[0]._id;
+                        /*let userId = data.data[0]._id;
                         let userOrder = data.data[0].orders;
 
                         //tao don hang
@@ -250,10 +206,11 @@ function CreateOrder() {
                                     }
                                 });
                                 handleModalClose();
-                            })
+                            })*/
                     }
                     //nếu chưa có customer có sdt này ==> tạo mới customer và update orderId
                     else {
+                        console.log("số điện thoại chưa có");
                         //tao don hang
                         let content = {
                             method: "POST",
@@ -272,17 +229,18 @@ function CreateOrder() {
                                 let newUserOrder = []
                                 newUserOrder.push(orderId)
                                 let body = {
-                                    userName: newOrder.orderDetail.email,
+                                    userName: newOrderDetail.email,
                                     password: "12345678",
-                                    fullName: newOrder.orderDetail.name,
-                                    phone: newOrder.orderDetail.phone,
-                                    email: newOrder.orderDetail.email,
-                                    address: newOrder.orderDetail.address,
-                                    city: newOrder.orderDetail.city,
-                                    country: newOrder.orderDetail.country,
+                                    fullName: newOrderDetail.name,
+                                    phone: newOrderDetail.phone,
+                                    email: newOrderDetail.email,
+                                    address: newOrderDetail.address,
+                                    city: newOrderDetail.city,
+                                    country: newOrderDetail.country,
                                     orders: newUserOrder
                                 }
-                                //tạo content update customer
+                                console.log(body);
+                                //tạo new customer
                                 let content1 = {
                                     method: "POST",
                                     headers: {
