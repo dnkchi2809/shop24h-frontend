@@ -117,6 +117,10 @@ function DeleteOrder(props) {
         })
     }
 
+    useEffect(() => {
+        
+    })
+
     return (
         <>
             <Modal open={openDeleteOrderModal} onClose={handleModalClose}>

@@ -146,7 +146,7 @@ function CreateOrder() {
         if (validOrder) {
             console.log(newOrder);
 
-            fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrder.orderDetail.phone)
+            fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrderDetail.phone)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
@@ -155,7 +155,7 @@ function CreateOrder() {
                     if (data.data.length >= 1) {
                         console.log("số điện thoại đã có");
                         //lấy userId
-                        /*let userId = data.data[0]._id;
+                        let userId = data.data[0]._id;
                         let userOrder = data.data[0].orders;
 
                         //tao don hang
@@ -206,7 +206,7 @@ function CreateOrder() {
                                     }
                                 });
                                 handleModalClose();
-                            })*/
+                            })
                     }
                     //nếu chưa có customer có sdt này ==> tạo mới customer và update orderId
                     else {

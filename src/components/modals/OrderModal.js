@@ -70,7 +70,7 @@ function OrderModal(props) {
 
         if (validOrder) {
             //kiem tra so dien thoai
-            fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrder.orderDetail.phone)
+            fetch("https://shop24-backend.herokuapp.com/customers?phone=" + customerInfo.phone)
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
