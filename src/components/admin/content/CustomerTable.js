@@ -51,7 +51,6 @@ function CustomerTable() {
 
     const openDeleteUserModal = (param) => {
         setRowSelected(param);
-        console.log(param)
         dispatch({
             type: "DELETE_USER_MODAL",
             payload: {

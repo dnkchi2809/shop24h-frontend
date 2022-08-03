@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
 
 function EditOrder(props) {
-    console.log(props.order)
     const style = {
         position: 'absolute',
         top: '50%',
@@ -102,7 +101,6 @@ function EditOrder(props) {
             fetch("https://shop24-backend.herokuapp.com/orders/" + props.order._id, content)
                 .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
 
                     if (data.status == "Success 200") {
                         dispatch({
@@ -136,7 +134,6 @@ function EditOrder(props) {
     }
 
     const validateOrder = (paramOrder) => {
-        console.log(paramOrder);
         if (paramOrder.name == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
