@@ -21,16 +21,6 @@ function CreateOrder() {
 
     const { openCreateOrderModal } = useSelector((reduxData) => reduxData.reducers);
 
-    const [newOrder, setNewOrder] = useState({
-        fullName: "",
-        phone: "",
-        email: "",
-        address: "",
-        city: "",
-        country: "",
-        orders: []
-    })
-
     const [productList, setProductList] = useState(null);
 
     const [rowProductAdd, setRowProductAdd] = useState(["item"]);
@@ -39,51 +29,99 @@ function CreateOrder() {
 
     const [arrayItem, setArrayItem] = useState([]);
 
+    const [newOrderDetail, setNewOrderDetail] = useState({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        city: "",
+        country: "",
+        orderItems: arrayItem
+    })
+
+    const [newOrder, setNewOrder] = useState({
+        cost: total,
+        note: "",
+        orderDetail: [newOrderDetail]
+    })
+
     const onAddProductClick = () => {
         rowProductAdd.push("item")
     }
 
     const onSelectItem = (event) => {
         const selectedItem = {
+            index: "",
+            product: "",
             price: 0,
+            info: "",
             amount: 1
         }
+
         let idProduct = event.target.id;
+        let index = idProduct.slice(7);
+        selectedItem.index = index;
+        let arrayTemp = arrayItem;
+
         let maxAmount = 0;
         productList.map((element) => {
             if (element.name == event.target.value) {
-                console.log(element);
                 maxAmount = element.amount;
-                selectedItem.price = element.promotionPrice
+                selectedItem.product = element._id
+                selectedItem.price = element.promotionPrice;
+                selectedItem.info = element;
             }
         })
-        //setTotal(tempTotal)
 
-        let index = idProduct.slice(7);
+        //trong mảng arayItem, nếu có index giống thì add vào thêm
+        if (arrayTemp.length >= 1) {
+            if (Boolean(arrayTemp.find(element => element.index == selectedItem.index))) {
+                arrayTemp.map((element) => {
+                    if (element.index == selectedItem.index) {
+                        element.product = selectedItem.product;
+                        element.price = selectedItem.price;
+                        element.info = selectedItem.info;
+                    }
+                })
+            }
+            else {
+                arrayTemp.push(selectedItem);
+            }
+        }
+        else {
+            arrayTemp.push(selectedItem);
+        }
+
+        setArrayItem(arrayTemp);
+
         let idQuantity = "quantity" + index;
         let selectBox = document.getElementById(idQuantity);
         for (let i = 1; i <= maxAmount; i++) {
             let newOption = document.createElement('option');
             const optionText = document.createTextNode(i);
-            // set option text
             newOption.appendChild(optionText);
             selectBox.appendChild(newOption);
         }
+    }
 
-        selectBox.setAttribute("onchange", function () {
-            selectedItem.amount = this.value;
+    const onSelectQuantity = (event) => {
+        let idQuantity = event.target.id;
+        let index = idQuantity.slice(8);
+
+        arrayItem.map((element) => {
+            if (element.index == index) {
+                element.amount = event.target.value
+            }
         })
-
-        arrayItem.push(selectedItem);
     }
 
     const onInputNameChange = (event) => {
-        newOrder.fullName = event.target.value
+        newOrderDetail.name = event.target.value
     }
 
     const onInputPhoneChange = (event) => {
-        newOrder.phone = event.target.value
-        fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrder.phone)
+        newOrderDetail.phone = event.target.value
+        fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrderDetail.phone)
             .then((response) => response.json())
             .then((data) => {
                 if (data.data.length >= 1) {
@@ -99,8 +137,8 @@ function CreateOrder() {
     }
 
     const onInputEmailChange = (event) => {
-        newOrder.email = event.target.value
-        fetch("https://shop24-backend.herokuapp.com/customers?email=" + newOrder.email)
+        newOrderDetail.email = event.target.value
+        fetch("https://shop24-backend.herokuapp.com/customers?email=" + newOrderDetail.email)
             .then((response) => response.json())
             .then((data) => {
                 if (data.data.length >= 1) {
@@ -116,20 +154,20 @@ function CreateOrder() {
     }
 
     const onInputAddressChange = (event) => {
-        newOrder.address = event.target.value
+        newOrderDetail.address = event.target.value
     }
 
     const onInputCityChange = (event) => {
-        newOrder.city = event.target.value
+        newOrderDetail.city = event.target.value
     }
 
     const onInputCountryChange = (event) => {
-        newOrder.country = event.target.value
+        newOrderDetail.country = event.target.value
     }
 
-    const onInputUserNameChange = (event) => {
-        newOrder.userName = event.target.value;
-        fetch("https://shop24-backend.herokuapp.com/customers?userName=" + newOrder.userName)
+    const onInputOrderNameChange = (event) => {
+        newOrderDetail.userName = event.target.value;
+        fetch("https://shop24-backend.herokuapp.com/customers?userName=" + newOrderDetail.userName)
             .then((response) => response.json())
             .then((data) => {
                 if (data.data.length >= 1) {
@@ -137,7 +175,7 @@ function CreateOrder() {
                         type: "OPEN_SNACKBAR",
                         payload: {
                             openSnackbar: true,
-                            alertString: "Username already exists"
+                            alertString: "Ordername already exists"
                         }
                     })
                 }
@@ -145,54 +183,144 @@ function CreateOrder() {
 
     }
 
-    const onConfirmCreateUserClick = () => {
-        let validOrder = validateUser(newOrder);
+    const onConfirmCreateOrderClick = () => {
+        let validOrder = validateOrder(newOrderDetail);
 
         if (validOrder) {
-            let content = {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newOrder)
-            }
+            debugger;
+            console.log(newOrder);
 
-            fetch("https://shop24-backend.herokuapp.com/customers", content)
+            fetch("https://shop24-backend.herokuapp.com/customers?phone=" + newOrder.orderDetail.phone)
                 .then((response) => response.json())
                 .then((data) => {
+                    console.log(data);
 
-                    if (data.status == "Success 201") {
-                        dispatch({
-                            type: "OPEN_SNACKBAR",
-                            payload: {
-                                openSnackbar: true,
-                                alertString: "Create user succesfully"
-                            }
-                        })
-                        dispatch({
-                            type: "ALERT_SEVERITY",
-                            payload: {
-                                alertSeverity: "success"
-                            }
-                        });
+                    //nếu có customer trùng sdt ==> update orderid vào customer
+                    if (data.data.length >= 1) {
+                        console.log("số điện thoại đã có");
+                        //lấy userId
+                        let userId = data.data[0]._id;
+                        let userOrder = data.data[0].orders;
+
+                        //tao don hang
+                        let content = {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(newOrder)
+                        }
+                        fetch("https://shop24-backend.herokuapp.com/orders", content)
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+
+                                //lấy id đơn hàng
+                                let orderId = data.data._id
+                                userOrder.push(orderId)
+                                let body = {
+                                    orders: userOrder
+                                }
+                                //tạo content update customer
+                                let content1 = {
+                                    method: "PUT",
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(body)
+                                }
+
+                                fetch("https://shop24-backend.herokuapp.com/customers/" + userId, content1)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        console.log(data);
+                                    });
+
+                                dispatch({
+                                    type: "OPEN_SNACKBAR",
+                                    payload: {
+                                        openSnackbar: true,
+                                        alertString: "Create order success"
+                                    }
+                                })
+                                dispatch({
+                                    type: "ALERT_SEVERITY",
+                                    payload: {
+                                        alertSeverity: "success"
+                                    }
+                                });
+                                handleModalClose();
+                            })
                     }
+                    //nếu chưa có customer có sdt này ==> tạo mới customer và update orderId
                     else {
-                        dispatch({
-                            type: "OPEN_SNACKBAR",
-                            payload: {
-                                openSnackbar: true,
-                                alertString: "Error! Please try again"
-                            }
-                        })
+                        //tao don hang
+                        let content = {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(newOrder)
+                        }
+                        fetch("https://shop24-backend.herokuapp.com/orders", content)
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+
+                                //lấy id đơn hàng
+                                let orderId = data.data._id
+                                let newUserOrder = []
+                                newUserOrder.push(orderId)
+                                let body = {
+                                    userName: newOrder.orderDetail.email,
+                                    password: "12345678",
+                                    fullName: newOrder.orderDetail.name,
+                                    phone: newOrder.orderDetail.phone,
+                                    email: newOrder.orderDetail.email,
+                                    address: newOrder.orderDetail.address,
+                                    city: newOrder.orderDetail.city,
+                                    country: newOrder.orderDetail.country,
+                                    orders: newUserOrder
+                                }
+                                //tạo content update customer
+                                let content1 = {
+                                    method: "POST",
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(body)
+                                }
+
+                                fetch("https://shop24-backend.herokuapp.com/customers", content1)
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        console.log(data);
+                                    });
+
+                                dispatch({
+                                    type: "OPEN_SNACKBAR",
+                                    payload: {
+                                        openSnackbar: true,
+                                        alertString: "Create order success"
+                                    }
+                                })
+                                dispatch({
+                                    type: "ALERT_SEVERITY",
+                                    payload: {
+                                        alertSeverity: "success"
+                                    }
+                                });
+                                handleModalClose();
+                            })
                     }
                 })
-
-            handleModalClose()
         }
+    
     }
 
-    const validateUser = (paramUser) => {
-        if (paramUser.fullName == "") {
+    const validateOrder = (paramOrder) => {
+        console.log(paramOrder);
+        if (paramOrder.name == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
@@ -202,7 +330,7 @@ function CreateOrder() {
             })
             return false
         }
-        if (paramUser.phone == "") {
+        if (paramOrder.phone == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
@@ -212,7 +340,7 @@ function CreateOrder() {
             })
             return false
         }
-        if (paramUser.email == "") {
+        if (paramOrder.email == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
@@ -222,7 +350,7 @@ function CreateOrder() {
             })
             return false
         }
-        if (paramUser.address == "") {
+        if (paramOrder.address == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
@@ -232,7 +360,7 @@ function CreateOrder() {
             })
             return false
         }
-        if (paramUser.city == "") {
+        if (paramOrder.city == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
@@ -242,7 +370,7 @@ function CreateOrder() {
             })
             return false
         }
-        if (paramUser.country == "") {
+        if (paramOrder.country == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
@@ -252,12 +380,22 @@ function CreateOrder() {
             })
             return false
         }
-        if (paramUser.userName == "") {
+        if (paramOrder.userName == "") {
             dispatch({
                 type: "OPEN_SNACKBAR",
                 payload: {
                     openSnackbar: true,
-                    alertString: "Username is invalid"
+                    alertString: "Ordername is invalid"
+                }
+            })
+            return false
+        }
+        if (paramOrder.orderItems.length <= 0) {
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Orders is invalid"
                 }
             })
             return false
@@ -266,14 +404,16 @@ function CreateOrder() {
     }
 
     const handleModalClose = () => {
-        setTotal(0);
         setRowProductAdd(["item"]);
+        setArrayItem([]);
+        setTotal(0);
+
         dispatch({
             type: "CREATE_ORDER_MODAL",
             payload: {
                 openCreateOrderModal: false
             }
-        })   
+        })
     }
 
     useEffect(() => {
@@ -290,6 +430,8 @@ function CreateOrder() {
             })
         }
         setTotal(tempTotal);
+        newOrder.cost = total;
+        newOrderDetail.orderItems = arrayItem;
     })
 
     return (
@@ -385,7 +527,7 @@ function CreateOrder() {
                                                 </Col>
                                                 <Col className="col-2">Quantity:</Col>
                                                 <Col>
-                                                    <select className="form-control" id={"quantity" + index}>
+                                                    <select className="form-control" id={"quantity" + index} onChange={onSelectQuantity}>
 
                                                     </select>
                                                 </Col>
@@ -402,7 +544,7 @@ function CreateOrder() {
                         </Row>
                         <Row className="mt-4 text-center bg-danger">
                             <Col className="bg-primary">
-                                <btn className="btn bg-primary w-100 m-0" onClick={onConfirmCreateUserClick}>Confirm</btn>
+                                <btn className="btn bg-primary w-100 m-0" onClick={onConfirmCreateOrderClick}>Confirm</btn>
                             </Col>
                             <Col className="bg-secondary">
                                 <btn className="btn bg-secondary w-100 m-0 text-white" onClick={handleModalClose}>Cancel</btn>

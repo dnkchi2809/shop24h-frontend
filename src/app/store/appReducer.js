@@ -140,7 +140,7 @@ const appReducer = (state = initialState, action) => {
         case "DELETE_USER_MODAL":
             return {
                 ...state,
-                openDeleteUserModal: action.payload.openDeleteOrderModal
+                openDeleteUserModal: action.payload.openDeleteUserModal
             };
             break;
         case "CREATE_ORDER_MODAL":
