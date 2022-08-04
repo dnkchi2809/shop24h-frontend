@@ -32,7 +32,7 @@ function ContentComponent() {
 
     useEffect(() => {
         //setPageIndex(1);
-        onPageIndexChange(event, 1);
+        onPageIndexChange(null, 1);
     }, [pageAmount]);
 
     useEffect(() => {
@@ -87,7 +87,7 @@ function ContentComponent() {
 
             {/* Pagination */}
             <Grid className="mb-5 d-flex justify-content-end">
-                <Pagination count={pageAmount} defaultPage={pageIndex} onChange={onPageIndexChange} />
+                <Pagination count={pageAmount} page={pageIndex} onChange={onPageIndexChange} />
             </Grid>
         </>
     )
