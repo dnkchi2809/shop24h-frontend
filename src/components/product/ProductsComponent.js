@@ -31,6 +31,11 @@ function ContentComponent() {
     const keyword = new URLSearchParams(search).get('name');
 
     useEffect(() => {
+        //setPageIndex(1);
+        onPageIndexChange(event, 1);
+    }, [pageAmount]);
+
+    useEffect(() => {
         if (keyword) {
             const resultFilter = [];
             productList.map((element, index) => {
