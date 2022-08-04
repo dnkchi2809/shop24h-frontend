@@ -116,7 +116,7 @@ function ProductDetail() {
 
             })
             .catch(error => console.log('error', error));
-    })
+    }, [productId])
     return (
         <>
             <Row>
