@@ -126,7 +126,7 @@ function HeaderComponent() {
 
     return (
         <>
-            <Grid style={{ backgroundColor: "black", color: "white" }} >
+            <Grid style={{ backgroundColor: "black", color: "white", width : "100%" }} >
                 <Container>
                     <Row>
                         <Col>
@@ -245,7 +245,7 @@ function HeaderComponent() {
                         </Col>
                         <Col className="col-1" style={{ marginLeft: "3%" }}>
                             <Row className="mt-3 ">
-                                <a href="/orders" class="cart position-relative d-inline-flex" aria-label="View your shopping cart">
+                                <a href="/orders" class="cart" aria-label="View your shopping cart">
                                     <i className="fa-solid fa-cart-shopping fa-2x"></i>
                                     <span class="cart-basket d-flex align-items-center justify-content-center">
                                         {itemList}

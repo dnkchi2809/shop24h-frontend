@@ -1,9 +1,16 @@
-/* Hide scrollbar for Chrome, Safari and Opera */
-::-webkit-scrollbar {
-  display: none;
+/* hide scrollbar nhưng vẫn cho phép scrollinh */
+body {
+  -ms-overflow-style: none; /* cho  Internet Explorer, Edge */
+  scrollbar-width: none; /* cho Firefox */
+  overflow-y: scroll;
+  background-color: aquamarine;
 }
 
-a.cart{
+body::-webkit-scrollbar {
+  display: none; /* cho Chrome, Safari, and Opera */
+}
+
+a.cart {
   text-decoration: none;
   color: white;
 }
@@ -11,8 +18,8 @@ a.cart{
 a.cart .cart-basket {
   font-size: small;
   position: absolute;
-  top: -10px;
-  right: 35px;
+  top: 5px;
+  left: 35px;
   width: 22px;
   height: 22px;
   color: #fff;
@@ -52,48 +59,9 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
-@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
+@media screen and (max-width: 2000px) {
 
-  /* some CSS here */
-  .modal-style {
-    width: 50%;
-  }
-
-  .btn-viewall {
-    width: 30%;
-  }
-
-  .btn-addcart{
-    width: 40%;
-  }
-}
-
-/* #### Tablets Portrait or Landscape #### */
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-
-  /* some CSS here */
-  .modal-style {
-    width: 35%;
-  }
-
-  .btn-viewall {
-    width: 20%;
-  }
-
-  .btn-addcart{
-    width: 40%;
-  }
-
-  .logo-style{
-    width : 70%
-  }
-}
-
-/* #### Desktops #### */
-@media screen and (min-width: 1024px) {
-
-  /* some CSS here */
+  /*Định dạng của các khối khi màn hình có chiều rộng nhỏ hơn 2000px;*/
   .modal-style {
     width: 30%;
   }
@@ -102,15 +70,7 @@ input[type=number] {
     width: 15%;
   }
 
-  .btn-addcart{
+  .btn-addcart {
     width: 30%;
-  }
-
-  .btn-payment{
-    font-size: 110%;
-  }
-
-  .logo-style{
-    width : 60%
   }
 }
