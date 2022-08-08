@@ -74,3 +74,14 @@ input[type=number] {
 .btn-addcart {
   width: 30%;
 }
+
+.col-carousel{
+  width: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  /* The width is 100%, when the viewport is 800px or smaller */
+  .col-carousel{
+    width: 100%;
+  }
+}
