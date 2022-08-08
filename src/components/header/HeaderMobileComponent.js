@@ -243,15 +243,15 @@ export default function HeaderMobileComponent() {
       {
         user.length >= 1
           ?
-          <>
+          <div>
             <MenuItem onClick={handleMenuClose}>User: {user[0].displayName}</MenuItem>
             <MenuItem onClick={onBtnLogoutClick}>Log Out</MenuItem>
-          </>
+          </div>
           :
-          <>
+          <div>
             <MenuItem onClick={onBtnSignInClick}>Sign In</MenuItem>
             <MenuItem onClick={onBtnLogInClick}>Log In</MenuItem>
-          </>
+          </div>
       }
     </Menu>
   );
@@ -276,15 +276,15 @@ export default function HeaderMobileComponent() {
       {
         user.length >= 1
           ?
-          <>
+          <div>
             <MenuItem onClick={handleMenuClose}>User: {user[0].displayName}</MenuItem>
             <MenuItem onClick={onBtnLogoutClick}>Log Out</MenuItem>
-          </>
+          </div>
           :
-          <>
+          <div>
             <MenuItem onClick={onBtnSignInClick}>Sign In</MenuItem>
             <MenuItem onClick={onBtnLogInClick}>Log In</MenuItem>
-          </>
+          </div>
       }
     </Menu>
   );
@@ -294,7 +294,7 @@ export default function HeaderMobileComponent() {
 
     let orderList = JSON.parse(localStorage.getItem("orderList")) || [];
     setItemList(orderList.length)
-  });
+  }, [itemList]);
 
   useEffect(() => {
     /*auth.onAuthStateChanged((result) => {

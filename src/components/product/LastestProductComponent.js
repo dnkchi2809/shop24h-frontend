@@ -1,6 +1,6 @@
-import { Grid, Typography } from "@mui/material"
+import { Grid } from "@mui/material"
 import { useEffect, useState } from "react"
-import { Row, Col } from "react-bootstrap"
+import { Row } from "react-bootstrap"
 import { Container } from "reactstrap"
 import ProductCard from "./ProductCard";
 

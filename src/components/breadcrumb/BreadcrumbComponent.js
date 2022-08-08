@@ -51,7 +51,7 @@ function BreadcrumbComponent() {
                 dispatch({
                   type: "SET_BREADCRUMB",
                   payload: {
-                    breadcrumb1: "products",
+                    breadcrumb1: breadcrumb1,
                     breadcrumb2: null,
                     breadcrumb3: null
                   }

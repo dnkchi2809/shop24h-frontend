@@ -6,6 +6,7 @@ import ProductFilterComponent from "../components/product/ProductFilterComponent
 import HeaderMobileComponent from "../components/header/HeaderMobileComponent";
 import FooterComponent from "../components/footer/FooterComponent"
 import { useEffect } from "react";
+import { Grid } from "@mui/material"
 import { useSelector, useDispatch } from "react-redux";
 
 function ProductList() {
@@ -27,13 +28,13 @@ function ProductList() {
             <Container className="mt-1">
                 <BreadcrumbComponent className="mb-5" />
                 <Row>
-                    <Col className="col-3">
+                    <Grid className="col-menu-product">
                         <MenuProductComponent />
                         <ProductFilterComponent />
-                    </Col>
-                    <Col className="col-9">
+                    </Grid>
+                    <Grid className="col-product-component">
                         <ProductsComponent />
-                    </Col>
+                    </Grid>
                 </Row>
             </Container>
 

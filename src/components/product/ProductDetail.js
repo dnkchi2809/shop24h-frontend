@@ -124,11 +124,11 @@ function ProductDetail() {
                     productInfo
                         ?
                         <>
-                            <Col className="col-5" style={{ marginRight: "5%" }}>
+                            <Grid className="col-product-image">
                                 <Grid className="square" style={{ backgroundImage: "url(" + productInfo.imageUrl + ")" }}>
                                 </Grid>
-                            </Col>
-                            <Col>
+                            </Grid>
+                            <Grid className="col-product-detail">
                                 <Row className="mt-1 display-6"><b>{productInfo.name}</b></Row>
                                 <Row className="mt-3">
                                     <Col>
@@ -153,7 +153,7 @@ function ProductDetail() {
                                 <Row className="mt-5">
                                     <Button className="btn btn-dark btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i className="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
                                 </Row>
-                            </Col>
+                            </Grid>
                         </>
                         :
                         null

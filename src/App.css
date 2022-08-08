@@ -53,6 +53,10 @@ input[type=number] {
   width: 25%;
 }
 
+.col-similar-product{
+  width: 25%;
+}
+
 .menu-tittle{
   font-size: 200%;
   font-weight: 300;
@@ -82,16 +86,41 @@ input[type=number] {
   padding-right: 5%;
 }
 
+.col-menu-product{
+  width : 25%
+}
+
+.col-product-component{
+  width : 75%
+}
+
+.col-product-card-component{
+  width : 33.33%
+}
+
+.list-menu-product-drawer{
+  display :none
+}
+
+.col-product-image{
+  width : 50%
+}
+
+.col-product-detail{
+  width : 50%
+}
+
 @media screen and (max-width: 767px) {
   /* The width is 100%, when the viewport is 800px or smaller */
-  body{
-    font-size: smaller;
-  }
   .col-carousel{
     width: 100%;
   }
 
   .col-lastest-product{
+    width: 50%;
+  }
+
+  .col-similar-product{
     width: 50%;
   }
 
@@ -104,10 +133,6 @@ input[type=number] {
 
   .btn-viewall{
     width : 35%
-  }
-
-  .logo-style{
-    width : "100%"
   }
 
   .footer-title{
@@ -125,5 +150,29 @@ input[type=number] {
     width:100%;
     padding-right: 20%;
     font-size: 50%;
+  }
+
+  .col-menu-product{
+    width : 100%
+  }
+  
+  .col-product-component{
+    width : 100%
+  }
+
+  .product-all-menu{
+    display : none
+  }
+
+  .col-product-card-component{
+    width : 100%
+  }
+
+  .col-product-image{
+    width : 60%
+  }
+  
+  .col-product-detail{
+    width : 40%
   }
 }

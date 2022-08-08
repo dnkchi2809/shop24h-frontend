@@ -36,9 +36,9 @@ function SimilarProductComponent() {
                             similarProduct.map((element, index) => {
                                 while (index < 6) {
                                     return (
-                                        <Col className="col-4 mt-5">
+                                        <Grid className="col-similar-product">
                                             <ProductCard product={element} />
-                                        </Col>
+                                        </Grid>
                                     )
                                 }
                             })

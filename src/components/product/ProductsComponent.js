@@ -9,7 +9,7 @@ import ProductCard from "./ProductCard";
 function ContentComponent() {
     const { productList, lowPrice, highPrice, productType } = useSelector((reduxData) => reduxData.reducers);
 
-    const limit = 12;
+    const limit = 9;
 
     const [pageIndex, setPageIndex] = useState(1);
 
@@ -73,9 +73,9 @@ function ContentComponent() {
                         rows.map((element, index) => {
                             if (element.promotionPrice >= lowPrice && element.promotionPrice <= highPrice) {
                                 return (
-                                    <Col className="col-4 mt-3 mb-4">
+                                    <Grid className="col-product-card-component">
                                         <ProductCard product={element} />
-                                    </Col>
+                                    </Grid>
                                 )
                             }
 

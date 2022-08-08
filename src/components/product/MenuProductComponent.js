@@ -26,6 +26,14 @@ function MenuProductComponent() {
                     payload: {
                         productType: ""
                     }
+                });
+                dispatch({
+                    type: "SET_BREADCRUMB",
+                    payload: {
+                        breadcrumb1: "products",
+                        breadcrumb2: null,
+                        breadcrumb3: null
+                    }
                 })
             })
             .catch(error => console.log('error', error));
