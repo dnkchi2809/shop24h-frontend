@@ -81,6 +81,9 @@ input[type=number] {
 
 @media screen and (max-width: 800px) {
   /* The width is 100%, when the viewport is 800px or smaller */
+  body{
+    font-size: smaller;
+  }
   .col-carousel{
     width: 100%;
   }

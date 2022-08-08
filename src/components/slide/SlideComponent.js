@@ -58,9 +58,9 @@ function SlideComponent() {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                         </Typography>
                         <Row className="mt-3">
-                            <Col className="col-4">
+                            <Grid>
                                 <button className="btn border-primary text-primary btn-lg" onClick={onBtnShopNowClick}>SHOP NOW</button>
-                            </Col>
+                            </Grid>
                         </Row>
                     </Grid>
                 </Row>
