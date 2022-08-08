@@ -34,7 +34,7 @@ function FooterComponent() {
                         </Col>
                         <Col className="col-3 justify-content-center align-items-center">
                             <Row className="justify-content-center">
-                                <img src={logoImg} className="logo-style" />
+                                <img src={logoImg} className="logo-style w-75" />
                             </Row>
                             <Row>
                                 <Col className="d-flex justify-content-center">
