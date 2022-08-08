@@ -12,7 +12,7 @@ function SlideComponent() {
 
     return (
         <>
-            <Container>
+            <Container className="mt-2">
                 <Row className="align-items-center">
                     <Col className="col-6 p-5">
                         <Row>

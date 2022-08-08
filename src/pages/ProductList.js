@@ -3,7 +3,7 @@ import BreadcrumbComponent from "../components/breadcrumb/BreadcrumbComponent";
 import ProductsComponent from "../components/product/ProductsComponent";
 import MenuProductComponent from "../components/product/MenuProductComponent";
 import ProductFilterComponent from "../components/product/ProductFilterComponent";
-import HeaderComponent from "../components/header/HeaderComponent";
+import HeaderMobileComponent from "../components/header/HeaderMobileComponent";
 import FooterComponent from "../components/footer/FooterComponent"
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ function ProductList() {
     }, [])
     return (
         <>
-            <HeaderComponent />
+            <HeaderMobileComponent />
             <Container className="mt-1">
                 <BreadcrumbComponent className="mb-5" />
                 <Row>

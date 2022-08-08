@@ -11,7 +11,7 @@ function ProductCard(props) {
     let productId = document.getElementById(props.product._id);
 
     const onMouseEnterProduct = (e) => {
-        productId.style.border = "3px solid black";
+        productId.style.border = "15px solid #ffffff";
     }
 
     const onMouseLeaveProduct = (e) => {

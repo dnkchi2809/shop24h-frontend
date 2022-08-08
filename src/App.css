@@ -1,13 +1,16 @@
 /* hide scrollbar nhưng vẫn cho phép scrollinh */
 body {
-  -ms-overflow-style: none; /* cho  Internet Explorer, Edge */
-  scrollbar-width: none; /* cho Firefox */
+  -ms-overflow-style: none;
+  /* cho  Internet Explorer, Edge */
+  scrollbar-width: none;
+  /* cho Firefox */
   overflow-y: scroll;
   background-color: aquamarine;
 }
 
 body::-webkit-scrollbar {
-  display: none; /* cho Chrome, Safari, and Opera */
+  display: none;
+  /* cho Chrome, Safari, and Opera */
 }
 
 a.cart {
@@ -59,18 +62,15 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-@media screen and (max-width: 2000px) {
+/*Định dạng của các khối khi màn hình có chiều rộng nhỏ hơn 2000px;*/
+.modal-style {
+  width: 30%;
+}
 
-  /*Định dạng của các khối khi màn hình có chiều rộng nhỏ hơn 2000px;*/
-  .modal-style {
-    width: 30%;
-  }
+.btn-viewall {
+  width: 15%;
+}
 
-  .btn-viewall {
-    width: 15%;
-  }
-
-  .btn-addcart {
-    width: 30%;
-  }
+.btn-addcart {
+  width: 30%;
 }

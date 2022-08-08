@@ -1,14 +1,14 @@
 import { Container } from "reactstrap"
 import BreadcrumbComponent from "../components/breadcrumb/BreadcrumbComponent";
 import FooterComponent from "../components/footer/FooterComponent";
-import HeaderComponent from "../components/header/HeaderComponent";
+import HeaderMobileComponent from "../components/header/HeaderMobileComponent";
 import ProductDetail from "../components/product/ProductDetail";
 import SimilarProductComponent from "../components/product/SimilarProductComponent";
 
 function ProductInfo() {
     return (
         <>
-            <HeaderComponent />
+            <HeaderMobileComponent />
             <Container className="mt-1">
                 <BreadcrumbComponent className="mb-5" />
                 <ProductDetail />

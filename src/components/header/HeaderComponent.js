@@ -126,7 +126,7 @@ function HeaderComponent() {
 
     return (
         <>
-            <Grid style={{ backgroundColor: "black", color: "white", width : "100%" }} >
+            <Grid style={{ backgroundColor: "black", color: "white", width : "100%" }} className="header-page" >
                 <Container>
                     <Row>
                         <Col>
