@@ -20,9 +20,9 @@ function LastestProductComponent() {
         <>
             <Container style={{ marginTop: "4%" }}>
                 <Row className="text-center">
-                    <Typography>
-                        <h1>LASTED PRODUCT</h1>
-                    </Typography>
+                    <Grid className="menu-tittle">
+                        LASTED PRODUCT
+                    </Grid>
                 </Row>
                 <Row>
                     {
@@ -31,9 +31,9 @@ function LastestProductComponent() {
                             lastestProduct.map((element, index) => {
                                 while (index < 8) {
                                     return (
-                                        <Col className="col-3 mt-5">
+                                        <Grid className="col-lastest-product">
                                             <ProductCard product={element} />
-                                        </Col>
+                                        </Grid>
                                     )
                                 }
                             })

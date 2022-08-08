@@ -42,7 +42,7 @@ function ProductCard(props) {
             <Row className="text-center m-0" id={props.product._id} onClick={onProductClick} onMouseEnter={onMouseEnterProduct} onMouseLeave={onMouseLeaveProduct}>
                 <Grid className="square" style={{backgroundImage: "url(" + props.product.imageUrl + ")"}}>
                 </Grid>
-                <p className="h5 mt-1">{props.product.name}</p>
+                <p className="mt-1 mb-0 p-0 product-name">{props.product.name}</p>
                 <p>
                     <a className="old-price">${props.product.buyPrice}</a>&nbsp;
                     <a className="new-price">${props.product.promotionPrice}</a>

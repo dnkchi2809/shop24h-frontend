@@ -13,26 +13,9 @@ body::-webkit-scrollbar {
   /* cho Chrome, Safari, and Opera */
 }
 
-a.cart {
-  text-decoration: none;
-  color: white;
-}
-
-a.cart .cart-basket {
-  font-size: small;
-  position: absolute;
-  top: 5px;
-  left: 35px;
-  width: 22px;
-  height: 22px;
-  color: #fff;
-  background-color: cornflowerblue;
-  border-radius: 50%;
-}
-
 .new-price {
   font-size: medium;
-  font-weight: bold;
+  font-weight: 500;
   text-decoration-line: none;
   color: cornflowerblue;
 }
@@ -62,29 +45,49 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-/*Định dạng của các khối khi màn hình có chiều rộng nhỏ hơn 2000px;*/
-.modal-style {
-  width: 30%;
-}
-
-.btn-viewall {
-  width: 15%;
-}
-
-.btn-addcart {
-  width: 30%;
-}
-
 .col-carousel{
   width: 50%;
 }
 
-@media screen and (max-width: 800px) {
+.col-lastest-product{
+  width: 25%;
+}
+
+.menu-tittle{
+  font-size: 200%;
+  font-weight: 300;
+  margin-bottom: 2%;
+}
+
+.btn-viewall{
+  width : 20%
+}
+
+.product-name{
+  font-weight: 500;
+}
+
+@media screen and (max-width: 767px) {
   /* The width is 100%, when the viewport is 800px or smaller */
   body{
     font-size: smaller;
   }
   .col-carousel{
     width: 100%;
+  }
+
+  .col-lastest-product{
+    width: 50%;
+  }
+
+  .menu-tittle{
+    font-size: 150%;
+    font-weight: 300;
+    margin-bottom: 3%;
+    margin-top: 5%;
+  }
+
+  .btn-viewall{
+    width : 35%
   }
 }
