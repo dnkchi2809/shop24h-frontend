@@ -67,6 +67,21 @@ input[type=number] {
   font-weight: 500;
 }
 
+.footer-title{
+  font-size: 150%;
+  font-weight: 400;
+}
+
+.footer-content{
+  text-decoration: "none";
+  color: dimgray
+}
+
+.footer-logo{
+  width:60%;
+  padding-right: 5%;
+}
+
 @media screen and (max-width: 767px) {
   /* The width is 100%, when the viewport is 800px or smaller */
   body{
@@ -89,5 +104,26 @@ input[type=number] {
 
   .btn-viewall{
     width : 35%
+  }
+
+  .logo-style{
+    width : "100%"
+  }
+
+  .footer-title{
+    font-size: 100%;
+    font-weight: 400;
+  }
+  
+  .footer-content{
+    font-size: 50%;
+    text-decoration: "none";
+    color: dimgray
+  }
+
+  .footer-logo{
+    width:100%;
+    padding-right: 20%;
+    font-size: 50%;
   }
 }
