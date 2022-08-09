@@ -1,6 +1,6 @@
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
-import { Col, Row } from 'react-bootstrap';
+import { Grid } from "@mui/material"
 import { useDispatch } from 'react-redux';
 
 function ProductFilterComponent() {
@@ -37,23 +37,24 @@ function ProductFilterComponent() {
 
     return (
         <>
-            <MenuList>
-                <MenuItem>
-                    <b>Price</b>
-                </MenuItem>
+
+            <Grid className="col-min-max-price">
                 <MenuItem>
                     Min Price
                 </MenuItem>
                 <MenuItem>
-                    <input className='w-100' onInput={onPriceLowestInput} />
+                    <input className='w-100 form-control' onInput={onPriceLowestInput} />
                 </MenuItem>
+            </Grid>
+            <Grid className="col-min-max-price">
                 <MenuItem>
                     Max Price
                 </MenuItem>
                 <MenuItem>
-                    <input className='w-100' onInput={onPriceHighestInput} />
+                    <input className='w-100 form-control' onInput={onPriceHighestInput} />
                 </MenuItem>
-            </MenuList>
+            </Grid>
+
         </>
     )
 }

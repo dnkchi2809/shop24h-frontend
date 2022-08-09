@@ -136,7 +136,7 @@ function ProductDetail() {
                                         <a className="new-price" style={{ fontSize: "250%" }}>${productInfo.promotionPrice}</a>
                                     </Col>
                                 </Row>
-                                <Row className="mt-5">
+                                <Row className="mt-4">
                                     <Col className="d-flex">
                                         <i className="fas fa-minus-circle fa-2x" style={{ marginRight: "2%" }} onClick={onBtnMinusProductClick}></i>
                                         <Input type="number" value={amount} onInput={onInputAmountChange} style={{ width: "100px" }} />
@@ -151,7 +151,7 @@ function ProductDetail() {
                                     </Col>
                                 </Row>
                                 <Row className="mt-5">
-                                    <Button className="btn btn-dark btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i className="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
+                                    <Button className="btn btn-info btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i className="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
                                 </Row>
                             </Grid>
                         </>

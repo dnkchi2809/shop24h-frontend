@@ -17,7 +17,7 @@ body::-webkit-scrollbar {
   font-size: medium;
   font-weight: 500;
   text-decoration-line: none;
-  color: cornflowerblue;
+  color: #0099CC;
 }
 
 .old-price {
@@ -110,6 +110,23 @@ input[type=number] {
   width : 50%
 }
 
+.col-menu-product-drawer{
+  display: none;
+}
+
+.btn-addcart{
+  width: 40%;
+  background-color: #0099CC;
+}
+
+.filter-price-product-component{
+  display: none;
+}
+
+.col-min-max-price{
+  width: 100%
+}
+
 @media screen and (max-width: 767px) {
   /* The width is 100%, when the viewport is 800px or smaller */
   .col-carousel{
@@ -169,10 +186,31 @@ input[type=number] {
   }
 
   .col-product-image{
-    width : 60%
+    width : 100%
   }
   
   .col-product-detail{
-    width : 40%
+    width : 100%
+  }
+
+  .col-menu-product-drawer{
+    display: block;
+  }
+
+  .col-menu-product {
+    display : none
+  }
+
+  .btn-addcart{
+    width: 40%;
+  }
+
+  .filter-price-product-component{
+    display: block;
+  }
+  .col-min-max-price{
+    width: 50%;
+    float: left;
+    margin-bottom: 2%;
   }
 }

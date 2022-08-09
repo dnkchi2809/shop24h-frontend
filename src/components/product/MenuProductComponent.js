@@ -92,7 +92,7 @@ function MenuProductComponent() {
     }, [])
     return (
         <>
-            <MenuList className='mb-3'>
+            <MenuList className='mb-2'>
                 <MenuItem onClick={onAllProductClick}>
                     <b>All Products</b>
                 </MenuItem>

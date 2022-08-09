@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 import { useLocation } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import ProductFilterComponent from "./ProductFilterComponent";
 
 function ContentComponent() {
     const { productList, lowPrice, highPrice, productType } = useSelector((reduxData) => reduxData.reducers);
@@ -66,6 +67,9 @@ function ContentComponent() {
     })
     return (
         <>
+            <Grid className="filter-price-product-component">
+                <ProductFilterComponent />
+            </Grid>
             <Row>
                 {
                     rows !== null

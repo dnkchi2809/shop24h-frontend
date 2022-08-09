@@ -27,6 +27,10 @@ import { useEffect, useState } from "react";
 import { auth } from "../../firebase";
 import LoginModal from "../modals/LoginModal";
 import SigninModal from '../modals/SigninModal';
+import { Divider } from '@mui/material';
+import { Grid } from "@mui/material"
+import MenuProductComponent from '../product/MenuProductComponent';
+import ProductFilterComponent from '../product/ProductFilterComponent';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -173,7 +177,7 @@ export default function HeaderMobileComponent() {
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
+      //onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
         <ListItem disablePadding>
@@ -208,6 +212,11 @@ export default function HeaderMobileComponent() {
           </ListItemButton>
         </ListItem>
       </List>
+
+      <Grid className="col-menu-product-drawer">
+        <Divider />
+        <MenuProductComponent />
+      </Grid>
     </Box>
   );
 

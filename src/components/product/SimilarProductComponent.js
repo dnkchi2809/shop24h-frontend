@@ -25,16 +25,16 @@ function SimilarProductComponent() {
         <>
             <Container style={{ marginTop: "4%" }}>
                 <Row className="text-center">
-                    <Typography>
-                        <h1>SIMILAR PRODUCT</h1>
-                    </Typography>
+                    <Grid className="menu-tittle">
+                        SIMILAR PRODUCT
+                    </Grid>
                 </Row>
                 <Row>
                     {
                         similarProduct !== null
                             ?
                             similarProduct.map((element, index) => {
-                                while (index < 6) {
+                                while (index < 4) {
                                     return (
                                         <Grid className="col-similar-product">
                                             <ProductCard product={element} />
@@ -47,11 +47,11 @@ function SimilarProductComponent() {
                     }
                 </Row>
                 <Row className="justify-content-center mt-4 mb-5">
-                        <btn className="btn btn-dark btn-viewall">
-                            <a style={{ color: "white", textDecoration: "none" }} href='/products'>
-                                VIEW ALL
-                            </a>
-                        </btn>
+                    <btn className="btn btn-dark btn-viewall">
+                        <a style={{ color: "white", textDecoration: "none" }} href='/products'>
+                            VIEW ALL
+                        </a>
+                    </btn>
                 </Row>
             </Container>
         </>

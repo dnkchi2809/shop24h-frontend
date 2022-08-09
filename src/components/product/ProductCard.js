@@ -11,11 +11,13 @@ function ProductCard(props) {
     let productId = document.getElementById(props.product._id);
 
     const onMouseEnterProduct = (e) => {
-        productId.style.border = "15px solid #ffffff";
+        productId.style.border = "15px solid #F2F3F4";
+        productId.style.backgroundColor = "#F2F3F4";
     }
 
     const onMouseLeaveProduct = (e) => {
         productId.style.border = "none";
+        productId.style.backgroundColor = "white";
     }
 
     const onProductClick = () => {
