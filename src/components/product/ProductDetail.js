@@ -67,19 +67,22 @@ function ProductDetail() {
 
         let orderList = JSON.parse(localStorage.getItem("orderList")) || [];
 
-        if (orderList.length >= 1) {
-            const productExit = orderList.find(element => element.product == newSelect.product);
+        let validNewSelect = validateNewSelect(newSelect);
+        if (validNewSelect) {
+            if (orderList.length >= 1) {
+                const productExit = orderList.find(element => element.product == newSelect.product);
 
-            if (Boolean(productExit)) {
-                productExit.amount += newSelect.amount
+                if (Boolean(productExit)) {
+                    productExit.amount += newSelect.amount
+                }
+                else {
+                    orderList.push(newSelect);
+                }
             }
             else {
+                console.log("false")
                 orderList.push(newSelect);
             }
-        }
-        else {
-            console.log("false")
-            orderList.push(newSelect);
         }
 
         console.log(orderList);
@@ -87,7 +90,22 @@ function ProductDetail() {
         localStorage.setItem("orderList", JSON.stringify(orderList))
     }
 
+    const validateNewSelect = (paramNewSelect) => {
+        if(paramNewSelect.amount <= 0){
+            dispatch({
+                type: "OPEN_SNACKBAR",
+                payload: {
+                    openSnackbar: true,
+                    alertString: "Select number of product!"
+                }
+            })
+            return false
+        } 
+        return true
+    }
+
     useEffect(() => {
+        console.log(productId);
         fetch("https://shop24-backend.herokuapp.com/products/" + productId || "http://localhost:8000/products/" + productId)
             .then(response => response.json())
             .then(result => {
@@ -112,7 +130,7 @@ function ProductDetail() {
                                 breadcrumb3: productInfo.name
                             }
                         })
-                     })
+                    })
 
             })
             .catch(error => console.log('error', error));
@@ -129,14 +147,14 @@ function ProductDetail() {
                                 </Grid>
                             </Grid>
                             <Grid className="col-product-detail">
-                                <Row className="mt-1 display-6"><b>{productInfo.name}</b></Row>
                                 <Row className="mt-3">
                                     <Col>
                                         <a className="old-price" style={{ fontSize: "250%", marginRight: "2%" }}>${productInfo.buyPrice}</a>&nbsp;
                                         <a className="new-price" style={{ fontSize: "250%" }}>${productInfo.promotionPrice}</a>
                                     </Col>
                                 </Row>
-                                <Row className="mt-4">
+                                <Row className="mt-1 display-5"><b>{productInfo.name}</b></Row>
+                                <Grid className="mt-4">
                                     <Col className="d-flex">
                                         <i className="fas fa-minus-circle fa-2x" style={{ marginRight: "2%" }} onClick={onBtnMinusProductClick}></i>
                                         <Input type="number" value={amount} onInput={onInputAmountChange} style={{ width: "100px" }} />
@@ -149,10 +167,10 @@ function ProductDetail() {
                                                 null
                                         }
                                     </Col>
-                                </Row>
-                                <Row className="mt-5">
+                                </Grid>
+                                <Grid className="mt-4">
                                     <Button className="btn btn-info btn-lg p-3 btn-addcart" onClick={onBtnAddToCartClick}><i className="fas fa-cart-plus"></i>&nbsp;Add to cart</Button>
-                                </Row>
+                                </Grid>
                             </Grid>
                         </>
                         :
